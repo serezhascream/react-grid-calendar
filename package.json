@@ -1,0 +1,24 @@
+{
+  "name": "react-grid-calendar",
+  "version": "1.0.0",
+  "description": "A simple calendar built with React, Typescript, and using css-grid",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serezhascream/react-grid-calendar.git"
+  },
+  "keywords": [
+    "react",
+    "calendar",
+    "css-grid"
+  ],
+  "author": "Sergei Matiushenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serezhascream/react-grid-calendar/issues"
+  },
+  "homepage": "https://github.com/serezhascream/react-grid-calendar#readme"
+}
