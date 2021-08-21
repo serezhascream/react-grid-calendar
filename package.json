@@ -1,24 +1,40 @@
 {
-  "name": "react-grid-calendar",
-  "version": "1.0.0",
-  "description": "A simple calendar built with React, Typescript, and using css-grid",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/serezhascream/react-grid-calendar.git"
-  },
-  "keywords": [
-    "react",
-    "calendar",
-    "css-grid"
-  ],
-  "author": "Sergei Matiushenko",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/serezhascream/react-grid-calendar/issues"
-  },
-  "homepage": "https://github.com/serezhascream/react-grid-calendar#readme"
+	"name": "react-grid-calendar",
+	"version": "1.0.0",
+	"description": "A simple calendar built with React, Typescript, and using css-grid",
+	"main": "./lib/cjs/index.js",
+	"module": "./lib/esm/index.js",
+	"types": "./lib/esm/index.d.ts",
+	"scripts": {
+		"build": "npm run build:esm && npm run build:cjs",
+		"build:esm": "tsc",
+		"build:cjs": "tsc --module commonjs --outDir lib/cjs",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/serezhascream/react-grid-calendar.git"
+	},
+	"keywords": [
+		"react",
+		"calendar",
+		"css-grid"
+	],
+	"author": "Sergei Matiushenko",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/serezhascream/react-grid-calendar/issues"
+	},
+	"homepage": "https://github.com/serezhascream/react-grid-calendar#readme",
+	"devDependencies": {
+		"@types/react": "^17.0.19",
+		"@types/react-dom": "^17.0.9",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"typescript": "^4.3.5"
+	},
+	"peerDependencies": {
+		"react": "^16.8.0",
+		"react-dom": "^16.8.0"
+	}
 }
