@@ -6,9 +6,12 @@
 	"module": "./lib/esm/index.js",
 	"types": "./lib/esm/index.d.ts",
 	"scripts": {
-		"build": "npm run build:esm && npm run build:cjs",
+		"build": "npm run compile-scss && npm run build:esm && npm run build:cjs",
 		"build:esm": "tsc",
 		"build:cjs": "tsc --module commonjs --outDir lib/cjs",
+		"compile-scss": "npm run compile-scss:cjs && npm run compile-scss:esm",
+		"compile-scss:cjs": "sass src/styles/index.scss:lib/cjs/styles/index.css",
+		"compile-scss:esm": "sass src/styles/index.scss:lib/esm/styles/index.css",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -32,10 +35,12 @@
 		"classnames": "^2.3.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
+		"sass": "^1.38.0",
 		"typescript": "^4.3.5"
 	},
 	"peerDependencies": {
-		"react": "^16.8.0",
-		"react-dom": "^16.8.0"
-	}
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"dependencies": {}
 }
