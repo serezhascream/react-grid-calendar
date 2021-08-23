@@ -11,7 +11,6 @@ import {
 	TSelectedDay,
 	TYearAndMonth,
 	TUseCalendarReturn,
-	TDayObject,
 	TCalendarData
 } from 'types';
 
@@ -29,7 +28,7 @@ export const useCalendar = (
 	);
 	
 	const handlerSetSelected = React.useCallback(
-		(day: TDayObject): void => setSelected(day),
+		(day: TSelectedDay): void => setSelected(day),
 		[setSelected]
 	);
 	
