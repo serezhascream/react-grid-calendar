@@ -14,7 +14,7 @@ import 'styles/index.css';
 
 const Calendar = ({
 	firstDayIsMonday = true,
-	selected,
+	selected = null,
 	markers = [],
 	onSelectDay,
 }: TCalendarProps) => {

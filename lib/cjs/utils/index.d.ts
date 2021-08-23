@@ -1,4 +1,4 @@
-import { TYearAndMonth, TDayObject, TCalendarData, TMonthType, TSelectedDay } from '../types';
+import { TYearAndMonth, TDayObject, TCalendarData, TMonthType, TSelectedDay } from 'types';
 export declare const getYearAndMonth: (initialDate?: Date | null) => TYearAndMonth;
 export declare const isToday: (year: number, month: number, day: number) => boolean;
 export declare const getWeekday: (year: number, month: number, day: number, firstDayIsMonday: boolean) => number;

@@ -26,7 +26,7 @@ export type TUseCalendarReturn = {
 	data: TCalendarData,
 	setActive(active: TYearAndMonth): void,
 	switchMonth: TSwitchDirection,
-	setSelected(day:TDayObject): void,
+	setSelected(day:TSelectedDay): void,
 };
 
 export type TUseDecadeReturn = {
@@ -38,7 +38,7 @@ export type TUseDecadeReturn = {
 
 export interface TCalendarProps {
 	firstDayIsMonday: boolean;
-	selected: TDayObject;
+	selected: TSelectedDay;
 	markers: number[],
 	onSelectDay(day: TDayObject): void;
 }
