@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TUseDecadeReturn } from '../types';
+import { TUseDecadeReturn } from 'types';
 
 export const getDecade = (year: number): number[] => {
 	const decade = [];

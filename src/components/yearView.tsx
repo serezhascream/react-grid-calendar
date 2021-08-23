@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { TYearViewProps } from '../types';
-import { MONTHS_TITLES } from '../data/constants';
-import { testIds } from '../data/tests';
+import { TYearViewProps } from 'types';
+import { MONTHS_TITLES } from 'data/constants';
+import { testIds } from 'data/tests';
 import MonthItem from './monthItem';
 
 const YearView = ({ onClick, activeView }: TYearViewProps) => {

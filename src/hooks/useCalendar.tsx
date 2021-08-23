@@ -5,7 +5,7 @@ import {
 	getPrev,
 	getNext,
 	getCalendarData
-} from '../utils';
+} from 'utils';
 
 import {
 	TSelectedDay,
@@ -13,7 +13,7 @@ import {
 	TUseCalendarReturn,
 	TDayObject,
 	TCalendarData
-} from '../types';
+} from 'types';
 
 export const useCalendar = (
 	selectedDay: TSelectedDay = null,

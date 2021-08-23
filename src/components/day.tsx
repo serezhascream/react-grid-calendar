@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { TDayProps } from '../types';
-import { testIds } from '../data/tests';
+import { TDayProps } from 'types';
+import { testIds } from 'data/tests';
 
 const Day = ({ day, onClick }: TDayProps) => {
 	const classes = React.useMemo(

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { TDecadeViewProps } from '../types';
-import { testIds } from '../data/tests';
+import { TDecadeViewProps } from 'types';
+import { testIds } from 'data/tests';
 import YearItem from './yearItem';
 
 const DecadeView = ({ decade, activeView, onClick, }: TDecadeViewProps) => {

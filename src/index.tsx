@@ -1,16 +1,16 @@
 import * as React from 'react';
  
-import { TCalendarProps } from './types';
-import { testIds } from './data/tests';
-import useCalendar from './hooks/useCalendar';
-import useDecade from './hooks/useDecade';
+import { TCalendarProps } from 'types';
+import { testIds } from 'data/tests';
+import useCalendar from 'hooks/useCalendar';
+import useDecade from 'hooks/useDecade';
 
-import Controls from './components/controls';
-import MonthView from './components/monthView';
-import YearView from './components/yearView';
-import DecadeView from './components/decadeView';
+import Controls from 'components/controls';
+import MonthView from 'components/monthView';
+import YearView from 'components/yearView';
+import DecadeView from 'components/decadeView';
 
-import './styles/index.css';
+import 'styles/index.css';
 
 const Calendar = ({
 	firstDayIsMonday = true,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { TMonthViewProps, TDayObject } from '../types';
-import { testIds } from '../data/tests';
+import { TMonthViewProps, TDayObject } from 'types';
+import { testIds } from 'data/tests';
 import WeekdayTitles from './weekdayTitles';
 import Day from './day';
 
