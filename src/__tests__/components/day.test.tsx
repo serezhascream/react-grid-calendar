@@ -2,11 +2,11 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Day from 'components/day';
-import { firstOfMay2021 } from 'data/fixture';
-import { testIds } from 'data/tests';
+import Day from '../../lib/components/day';
+import { testIds } from '../../lib/data/tests';
+import { firstOfMay2021 } from '../fixture';
 
-describe('components > calendar > Day', () => {
+describe('components > Day', () => {
 	it('renders', () => {
 		render(<Day day={firstOfMay2021} onClick={() => {}} />);
 		const day = screen.getByTestId(testIds.day);
