@@ -9,7 +9,7 @@ module.exports = {
 		".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
 	},
 	setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
-	testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+	testRegex: "(\\.|/)(test|spec)\\.tsx?$",
 	moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 	moduleDirectories: ["<rootDir>/node_modules", "<rootDir>/src"],
 	globals: {
