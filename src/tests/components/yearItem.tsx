@@ -2,10 +2,10 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 
-import YearItem from 'components/yearItem';
-import { testIds } from 'data/tests';
+import YearItem from '../../lib/components/yearItem';
+import { testIds } from '../../lib/data/tests';
 
-describe('components > calendar > YearItem', () => {
+describe('components > YearItem', () => {
 	it('renders', () => {
 		render(<YearItem year={2019} onClick={() => {}} />);
 

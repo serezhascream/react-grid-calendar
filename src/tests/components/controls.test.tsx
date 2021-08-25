@@ -2,9 +2,9 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 
-import { feb2021 } from 'data/fixture';
-import { testIds } from 'data/tests';
-import Controls from 'components/controls';
+import { feb2021 } from '../fixture';
+import { testIds } from '../../lib/data/tests';
+import Controls from '../../lib/components/controls';
 
 const {
 	controls,
@@ -14,7 +14,7 @@ const {
 	controlsMonthTitle
 } = testIds;
 
-describe('components > calendar > Controls', () => {
+describe('components > Controls', () => {
 	it('renders correctly', () => {
 		render(
 			<Controls

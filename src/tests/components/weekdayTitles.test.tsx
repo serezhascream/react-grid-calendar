@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import WeekdayTitles from 'components/weekdayTitles';
-import { testIds } from 'data/tests';
+import WeekdayTitles from '../../lib/components/weekdayTitles';
+import { testIds } from '../../lib/data/tests';
 
-describe('components > calendar > WeekdayTitles', () => {
+describe('components > WeekdayTitles', () => {
 	it('renders', () => {
 		render(<WeekdayTitles firstDayIsMonday />);
 

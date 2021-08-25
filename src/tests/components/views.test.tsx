@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import DecadeView from 'components/decadeView';
-import YearView from 'components/yearView';
-import MonthView from 'components/monthView';
+import DecadeView from '../../lib/components/decadeView';
+import YearView from '../../lib/components/yearView';
+import MonthView from '../../lib/components/monthView';
 
-import { nineties_decade, may2021 } from 'data/fixture';
-import { testIds } from 'data/tests';
-import { getCalendarData } from 'utils/index';
+import { nineties_decade, may2021 } from '../fixture';
+import { testIds } from '../../lib/data/tests';
+import { getCalendarData } from '../../lib/utils/index';
 
-describe('components > calendar > DecadeView', () => {
+describe('components > DecadeView', () => {
 	it('renders', () => {
 		render(<DecadeView
 			decade={nineties_decade}
@@ -23,7 +23,7 @@ describe('components > calendar > DecadeView', () => {
 	});
 });
 
-describe('components > calendar > YearView', () => {
+describe('components > YearView', () => {
 	it('renders', () => {
 		render(<YearView
 			activeView="year"
@@ -36,7 +36,7 @@ describe('components > calendar > YearView', () => {
 	});
 });
 
-describe('components > calendar > MonthView', () => {
+describe('components > MonthView', () => {
 	it('renders', () => {
 		const calendarData = getCalendarData(may2021, null, [], true);
 		
