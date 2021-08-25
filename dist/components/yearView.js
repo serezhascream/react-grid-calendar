@@ -32,11 +32,17 @@ const YearView = _ref => {
     return null;
   }
 
-  return <div className="rgc-calendar__year" data-testid={_tests.testIds.yearView}>
-			{_constants.MONTHS_TITLES.map((title, i) => <_monthItem.default key={title} title={title} index={i} onClick={handlerClick} />)}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__year",
+    "data-testid": _tests.testIds.yearView
+  }, _constants.MONTHS_TITLES.map((title, i) => /*#__PURE__*/React.createElement(_monthItem.default, {
+    key: title,
+    title: title,
+    index: i,
+    onClick: handlerClick
+  })));
 };
 
-var _default = React.memo(YearView);
+var _default = /*#__PURE__*/React.memo(YearView);
 
 exports.default = _default;

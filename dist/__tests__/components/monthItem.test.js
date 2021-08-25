@@ -20,12 +20,20 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 describe('components > calendar > MonthItem', () => {
   it('renders', () => {
-    (0, _react2.render)(<_monthItem.default title="March" index={2} onClick={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_monthItem.default, {
+      title: "March",
+      index: 2,
+      onClick: () => {}
+    }));
     expect(_react2.screen.getByTestId(_tests.testIds.monthItem)).toBeInTheDocument();
   });
   it('returns correct value on click', () => {
     const handlerClick = jest.fn(index => index);
-    (0, _react2.render)(<_monthItem.default title="March" index={2} onClick={handlerClick} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_monthItem.default, {
+      title: "March",
+      index: 2,
+      onClick: handlerClick
+    }));
 
     _userEvent.default.click(_react2.screen.getByTestId(_tests.testIds.monthItem));
 

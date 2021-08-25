@@ -31,11 +31,16 @@ const DecadeView = _ref => {
     return null;
   }
 
-  return <div className="rgc-calendar__decade" data-testid={_tests.testIds.decadeView}>
-			{decade.map(year => <_yearItem.default key={year} year={year} onClick={handlerClick} />)}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__decade",
+    "data-testid": _tests.testIds.decadeView
+  }, decade.map(year => /*#__PURE__*/React.createElement(_yearItem.default, {
+    key: year,
+    year: year,
+    onClick: handlerClick
+  })));
 };
 
-var _default = React.memo(DecadeView);
+var _default = /*#__PURE__*/React.memo(DecadeView);
 
 exports.default = _default;

@@ -35,16 +35,20 @@ const WeekdayTitles = _ref => {
     return ['sun', ..._constants.WEEKDAY_TITLES.slice(0, -1)];
   }, [firstDayIsMonday]);
   const weekend_days = React.useMemo(() => firstDayIsMonday ? [5, 6] : [0, 6], [firstDayIsMonday]);
-  return <div className="rgc-calendar__weekday-titles" data-testid={_tests.testIds.weekdayTitles}>
-			{titles.map((day, i) => {
-      const classes = (0, _classnames.default)('rgc-calendar__weekday-day', {
-        'rgc-calendar__weekday-day--weekend': weekend_days.includes(i)
-      });
-      return <span key={day} className={classes}>{day}</span>;
-    })}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__weekday-titles",
+    "data-testid": _tests.testIds.weekdayTitles
+  }, titles.map((day, i) => {
+    const classes = (0, _classnames.default)('rgc-calendar__weekday-day', {
+      'rgc-calendar__weekday-day--weekend': weekend_days.includes(i)
+    });
+    return /*#__PURE__*/React.createElement("span", {
+      key: day,
+      className: classes
+    }, day);
+  }));
 };
 
-var _default = React.memo(WeekdayTitles);
+var _default = /*#__PURE__*/React.memo(WeekdayTitles);
 
 exports.default = _default;

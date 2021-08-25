@@ -26,20 +26,32 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 describe('components > calendar > DecadeView', () => {
   it('renders', () => {
-    (0, _react2.render)(<_decadeView.default decade={_fixture.nineties_decade} activeView="decade" onClick={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_decadeView.default, {
+      decade: _fixture.nineties_decade,
+      activeView: "decade",
+      onClick: () => {}
+    }));
     expect(_react2.screen.getByTestId(_tests.testIds.decadeView)).toBeInTheDocument();
   });
 });
 describe('components > calendar > YearView', () => {
   it('renders', () => {
-    (0, _react2.render)(<_yearView.default activeView="year" onClick={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_yearView.default, {
+      activeView: "year",
+      onClick: () => {}
+    }));
     expect(_react2.screen.getByTestId(_tests.testIds.yearView)).toBeInTheDocument();
   });
 });
 describe('components > calendar > MonthView', () => {
   it('renders', () => {
     const calendarData = (0, _index.getCalendarData)(_fixture.may2021, null, [], true);
-    (0, _react2.render)(<_monthView.default data={calendarData} activeView="month" firstDayIsMonday={true} onClick={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_monthView.default, {
+      data: calendarData,
+      activeView: "month",
+      firstDayIsMonday: true,
+      onClick: () => {}
+    }));
     expect(_react2.screen.getByTestId(_tests.testIds.monthView)).toBeInTheDocument();
   });
 });

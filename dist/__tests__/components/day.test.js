@@ -22,7 +22,10 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 describe('components > calendar > Day', () => {
   it('renders', () => {
-    (0, _react2.render)(<_day.default day={_fixture.firstOfMay2021} onClick={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_day.default, {
+      day: _fixture.firstOfMay2021,
+      onClick: () => {}
+    }));
 
     const day = _react2.screen.getByTestId(_tests.testIds.day);
 
@@ -30,7 +33,10 @@ describe('components > calendar > Day', () => {
   });
   it('returns day object on click', () => {
     const mockCallback = jest.fn(day => day);
-    (0, _react2.render)(<_day.default day={_fixture.firstOfMay2021} onClick={mockCallback} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_day.default, {
+      day: _fixture.firstOfMay2021,
+      onClick: mockCallback
+    }));
 
     _userEvent.default.click(_react2.screen.getByTestId(_tests.testIds.day));
 

@@ -21,11 +21,13 @@ const YearItem = _ref => {
     onClick
   } = _ref;
   const handlerClick = React.useCallback(() => onClick(year), [onClick, year]);
-  return <div className="rgc-calendar__decade-year" data-testid={_tests.testIds.yearItem} onClick={handlerClick}>
-			{year}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__decade-year",
+    "data-testid": _tests.testIds.yearItem,
+    onClick: handlerClick
+  }, year);
 };
 
-var _default = React.memo(YearItem);
+var _default = /*#__PURE__*/React.memo(YearItem);
 
 exports.default = _default;

@@ -22,11 +22,13 @@ const MonthItem = _ref => {
     onClick
   } = _ref;
   const handlerClick = React.useCallback(() => onClick(index), [onClick, index]);
-  return <div className="rgc-calendar__year-month" data-testid={_tests.testIds.monthItem} onClick={handlerClick}>
-			{title}
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__year-month",
+    "data-testid": _tests.testIds.monthItem,
+    onClick: handlerClick
+  }, title);
 };
 
-var _default = React.memo(MonthItem);
+var _default = /*#__PURE__*/React.memo(MonthItem);
 
 exports.default = _default;

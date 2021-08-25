@@ -18,21 +18,27 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 describe('components > calendar > WeekdayTitles', () => {
   it('renders', () => {
-    (0, _react2.render)(<_weekdayTitles.default firstDayIsMonday />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_weekdayTitles.default, {
+      firstDayIsMonday: true
+    }));
 
     const titles = _react2.screen.getByTestId(_tests.testIds.weekdayTitles);
 
     expect(titles).toBeInTheDocument();
   });
   it('renders correctly when week starts on monday', () => {
-    (0, _react2.render)(<_weekdayTitles.default firstDayIsMonday />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_weekdayTitles.default, {
+      firstDayIsMonday: true
+    }));
 
     const titles = _react2.screen.getByTestId(_tests.testIds.weekdayTitles);
 
     expect(titles.children[0].textContent).toEqual('mon');
   });
   it('renders correctly when week starts on sunday', () => {
-    (0, _react2.render)(<_weekdayTitles.default firstDayIsMonday={false} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_weekdayTitles.default, {
+      firstDayIsMonday: false
+    }));
 
     const titles = _react2.screen.getByTestId(_tests.testIds.weekdayTitles);
 

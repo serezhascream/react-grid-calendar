@@ -32,11 +32,14 @@ const Day = _ref => {
     'rgc-calendar__day--has-marker': day.hasMarker
   }), [day]);
   const handlerClick = React.useCallback(() => onClick(day), [onClick, day]);
-  return <span key={day.timestamp} className={classes} onClick={handlerClick} data-testid={_tests.testIds.day}>
-			{day.day}
-		</span>;
+  return /*#__PURE__*/React.createElement("span", {
+    key: day.timestamp,
+    className: classes,
+    onClick: handlerClick,
+    "data-testid": _tests.testIds.day
+  }, day.day);
 };
 
-var _default = React.memo(Day);
+var _default = /*#__PURE__*/React.memo(Day);
 
 exports.default = _default;

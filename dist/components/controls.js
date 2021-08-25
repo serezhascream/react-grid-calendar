@@ -30,18 +30,28 @@ const Controls = _ref => {
   const handlerClickNext = React.useCallback(() => onSwitchDirection('next'), [onSwitchDirection]);
   const handlerClickOnMonth = React.useCallback(() => onSwitchView('year'), [onSwitchView]);
   const handlerClickOnYear = React.useCallback(() => onSwitchView('decade'), [onSwitchView]);
-  return <div className="rgc-calendar__controls" data-testid={_tests.testIds.controls}>
-			<span className={"rgc-calendar__btn rgc-calendar__btn-prev".concat(blockedArrowsClass)} data-testid={_tests.testIds.controlsPrevBtn} onClick={handlerClickPrev}>{'<'}</span>
-			<span className="rgc-calendar__controls-month" data-testid={_tests.testIds.controlsMonthTitle} onClick={handlerClickOnMonth}>
-				{monthTitle}
-			</span>
-			<span className="rgc-calendar__controls-year" data-testid={_tests.testIds.controlsYearTitle} onClick={handlerClickOnYear}>
-				{active.year}
-			</span>
-			<span className={"rgc-calendar__btn rgc-calendar__btn-next".concat(blockedArrowsClass)} data-testid={_tests.testIds.controlsNextBtn} onClick={handlerClickNext}>{'>'}</span>
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__controls",
+    "data-testid": _tests.testIds.controls
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "rgc-calendar__btn rgc-calendar__btn-prev".concat(blockedArrowsClass),
+    "data-testid": _tests.testIds.controlsPrevBtn,
+    onClick: handlerClickPrev
+  }, '<'), /*#__PURE__*/React.createElement("span", {
+    className: "rgc-calendar__controls-month",
+    "data-testid": _tests.testIds.controlsMonthTitle,
+    onClick: handlerClickOnMonth
+  }, monthTitle), /*#__PURE__*/React.createElement("span", {
+    className: "rgc-calendar__controls-year",
+    "data-testid": _tests.testIds.controlsYearTitle,
+    onClick: handlerClickOnYear
+  }, active.year), /*#__PURE__*/React.createElement("span", {
+    className: "rgc-calendar__btn rgc-calendar__btn-next".concat(blockedArrowsClass),
+    "data-testid": _tests.testIds.controlsNextBtn,
+    onClick: handlerClickNext
+  }, '>'));
 };
 
-var _default = React.memo(Controls);
+var _default = /*#__PURE__*/React.memo(Controls);
 
 exports.default = _default;

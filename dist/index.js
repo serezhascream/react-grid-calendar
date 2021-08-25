@@ -23,8 +23,6 @@ var _yearView = _interopRequireDefault(require("components/yearView"));
 
 var _decadeView = _interopRequireDefault(require("components/decadeView"));
 
-require("styles/index.css");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -100,14 +98,29 @@ const Calendar = _ref => {
   React.useEffect(() => {
     setSelected(selected);
   }, [selected]);
-  return <div className="org-calendar" data-testid={_tests.testIds.calendar}>
-			<_controls.default active={current} activeView={activeView} onSwitchDirection={handleSwitchDirection} onSwitchView={handlerSwitchView} />
-			<_monthView.default data={data} activeView={activeView} firstDayIsMonday={firstDayIsMonday} onClick={handlerSelectDay} />
-			<_yearView.default activeView={activeView} onClick={handlerSelectMonth} />
-			<_decadeView.default decade={decade} activeView={activeView} onClick={handlerSelectYear} />
-		</div>;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "org-calendar",
+    "data-testid": _tests.testIds.calendar
+  }, /*#__PURE__*/React.createElement(_controls.default, {
+    active: current,
+    activeView: activeView,
+    onSwitchDirection: handleSwitchDirection,
+    onSwitchView: handlerSwitchView
+  }), /*#__PURE__*/React.createElement(_monthView.default, {
+    data: data,
+    activeView: activeView,
+    firstDayIsMonday: firstDayIsMonday,
+    onClick: handlerSelectDay
+  }), /*#__PURE__*/React.createElement(_yearView.default, {
+    activeView: activeView,
+    onClick: handlerSelectMonth
+  }), /*#__PURE__*/React.createElement(_decadeView.default, {
+    decade: decade,
+    activeView: activeView,
+    onClick: handlerSelectYear
+  }));
 };
 
-var _default = React.memo(Calendar);
+var _default = /*#__PURE__*/React.memo(Calendar);
 
 exports.default = _default;

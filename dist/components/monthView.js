@@ -34,14 +34,18 @@ const MonthView = _ref => {
     return null;
   }
 
-  return <React.Fragment>
-			<_weekdayTitles.default firstDayIsMonday={firstDayIsMonday} />
-			<div className="rgc-calendar__month" data-testid={_tests.testIds.monthView}>
-				{data.map(day => <_day.default key={day.timestamp} day={day} onClick={handlerClick} />)}
-			</div>
-		</React.Fragment>;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_weekdayTitles.default, {
+    firstDayIsMonday: firstDayIsMonday
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "rgc-calendar__month",
+    "data-testid": _tests.testIds.monthView
+  }, data.map(day => /*#__PURE__*/React.createElement(_day.default, {
+    key: day.timestamp,
+    day: day,
+    onClick: handlerClick
+  }))));
 };
 
-var _default = React.memo(MonthView);
+var _default = /*#__PURE__*/React.memo(MonthView);
 
 exports.default = _default;

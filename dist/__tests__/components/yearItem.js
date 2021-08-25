@@ -20,12 +20,18 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 describe('components > calendar > YearItem', () => {
   it('renders', () => {
-    (0, _react2.render)(<_yearItem.default year={2019} onClick={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_yearItem.default, {
+      year: 2019,
+      onClick: () => {}
+    }));
     expect(_react2.screen.getByTestId(_tests.testIds.yearItem)).toBeInTheDocument();
   });
   it('returns a year on click', () => {
     const handlerClick = jest.fn(year => year);
-    (0, _react2.render)(<_yearItem.default year={2019} onClick={handlerClick} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_yearItem.default, {
+      year: 2019,
+      onClick: handlerClick
+    }));
 
     _userEvent.default.click(_react2.screen.getByTestId(_tests.testIds.yearItem));
 

@@ -29,7 +29,12 @@ const {
 } = _tests.testIds;
 describe('components > calendar > Controls', () => {
   it('renders correctly', () => {
-    (0, _react2.render)(<_controls.default active={_fixture.feb2021} activeView="month" onSwitchDirection={() => {}} onSwitchView={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_controls.default, {
+      active: _fixture.feb2021,
+      activeView: "month",
+      onSwitchDirection: () => {},
+      onSwitchView: () => {}
+    }));
     expect(_react2.screen.getByTestId(controls)).toBeInTheDocument();
     expect(_react2.screen.getByTestId(controlsPrevBtn)).toBeInTheDocument();
     expect(_react2.screen.getByTestId(controlsNextBtn)).toBeInTheDocument();
@@ -37,13 +42,23 @@ describe('components > calendar > Controls', () => {
     expect(_react2.screen.getByTestId(controlsYearTitle)).toBeInTheDocument();
   });
   it('has blocked arrows when active view is year', () => {
-    (0, _react2.render)(<_controls.default active={_fixture.feb2021} activeView="year" onSwitchDirection={() => {}} onSwitchView={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_controls.default, {
+      active: _fixture.feb2021,
+      activeView: "year",
+      onSwitchDirection: () => {},
+      onSwitchView: () => {}
+    }));
     expect(_react2.screen.getByTestId(controlsPrevBtn)).toHaveClass('rgc-calendar__btn--blocked');
     expect(_react2.screen.getByTestId(controlsNextBtn)).toHaveClass('rgc-calendar__btn--blocked');
   });
   it('click on month title works', () => {
     const handlerSwitchView = jest.fn(view => view);
-    (0, _react2.render)(<_controls.default active={_fixture.feb2021} activeView="month" onSwitchDirection={() => {}} onSwitchView={handlerSwitchView} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_controls.default, {
+      active: _fixture.feb2021,
+      activeView: "month",
+      onSwitchDirection: () => {},
+      onSwitchView: handlerSwitchView
+    }));
 
     _userEvent.default.click(_react2.screen.getByTestId(controlsMonthTitle));
 
@@ -51,7 +66,12 @@ describe('components > calendar > Controls', () => {
   });
   it('click on year title works', () => {
     const handlerSwitchView = jest.fn(view => view);
-    (0, _react2.render)(<_controls.default active={_fixture.feb2021} activeView="month" onSwitchDirection={() => {}} onSwitchView={handlerSwitchView} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_controls.default, {
+      active: _fixture.feb2021,
+      activeView: "month",
+      onSwitchDirection: () => {},
+      onSwitchView: handlerSwitchView
+    }));
 
     _userEvent.default.click(_react2.screen.getByTestId(controlsYearTitle));
 
@@ -59,7 +79,12 @@ describe('components > calendar > Controls', () => {
   });
   it('click on arrows works', () => {
     const handlerSwitchDirection = jest.fn(direction => direction);
-    (0, _react2.render)(<_controls.default active={_fixture.feb2021} activeView="month" onSwitchDirection={handlerSwitchDirection} onSwitchView={() => {}} />);
+    (0, _react2.render)( /*#__PURE__*/React.createElement(_controls.default, {
+      active: _fixture.feb2021,
+      activeView: "month",
+      onSwitchDirection: handlerSwitchDirection,
+      onSwitchView: () => {}
+    }));
 
     _userEvent.default.click(_react2.screen.getByTestId(controlsPrevBtn));
 
