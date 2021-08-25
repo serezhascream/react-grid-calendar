@@ -4,15 +4,13 @@
 	"description": "A simple calendar built with React, Typescript, and using css-grid",
 	"main": "./dist/index.js",
 	"scripts": {
-		"dist": "rm -rf dist && NODE_ENV=production babel ./src --out-dir dist --copy-files --extensions .ts,.tsx",
-		"build": "npm run compile-scss && npm run build:esm && npm run build:cjs",
-		"build:esm": "tsc",
-		"build:cjs": "tsc --module commonjs --outDir lib/cjs",
-		"compile-scss": "npm run compile-scss:cjs && npm run compile-scss:esm",
-		"compile-scss:cjs": "sass src/styles/index.scss:lib/cjs/styles/index.css",
-		"compile-scss:esm": "sass src/styles/index.scss:lib/esm/styles/index.css",
-		"test": "jest",
-		"test:watch": "jest --watch"
+		"deploy": "npm run clean-dist && npm run prebuild && npm run compile-types && npm run publish && npm run clean-dist",
+		"prebuild": "NODE_ENV=production babel ./src/lib --out-dir lib --copy-files --extensions .ts,.tsx --config-file ./conf/babel.config.json",
+		"compile-types": "tsc -p ./conf/tsconfig.json",
+		"publish": "npm pack",
+		"clean-dist": "rm -rf lib",
+		"test": "jest --config ./conf/jest.config.js",
+		"test:watch": "jest --watch --config ./conf/jest.config.js"
 	},
 	"repository": {
 		"type": "git",
