@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { TMonthItemProps } from 'types';
-import { testIds } from 'data/tests';
+import { TMonthItemProps } from '../types';
+import { testIds } from '../data/tests';
 
 const MonthItem = ({ title, index, onClick }: TMonthItemProps) => {
 	const handlerClick = React.useCallback(() => onClick(index), [onClick, index]);

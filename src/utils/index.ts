@@ -4,7 +4,7 @@ import {
 	TCalendarData,
 	TMonthType,
 	TSelectedDay,
-} from 'types';
+} from '../types';
 
 export const getYearAndMonth = (initialDate: Date | null = null): TYearAndMonth => {
 	const activeDate = initialDate || new Date(Date.now());

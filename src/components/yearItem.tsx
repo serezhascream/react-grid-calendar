@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { TYearItemProps } from 'types';
-import { testIds } from 'data/tests';
+import { TYearItemProps } from '../types';
+import { testIds } from '../data/tests';
 
 const YearItem = ({ year, onClick } : TYearItemProps) => {
 	const handlerClick = React.useCallback((): void => onClick(year), [onClick, year]);

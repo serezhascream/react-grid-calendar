@@ -1,4 +1,4 @@
-import { TDayObject } from 'types';
+import { TDayObject } from '../types';
 
 export const seventies_decade = [1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979];
 export const eighties_decade = [1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989];

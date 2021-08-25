@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { WEEKDAY_TITLES } from 'data/constants';
-import { testIds } from 'data/tests';
+import { WEEKDAY_TITLES } from '../data/constants';
+import { testIds } from '../data/tests';
 
 const WeekdayTitles = ({ firstDayIsMonday }: { firstDayIsMonday: boolean }) => {
 	const titles = React.useMemo(() => {

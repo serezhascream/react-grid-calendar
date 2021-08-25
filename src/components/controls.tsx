@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { MONTHS_TITLES } from 'data/constants';
-import { TControlsProps } from 'types';
-import { testIds } from 'data/tests';
+import { MONTHS_TITLES } from '../data/constants';
+import { TControlsProps } from '../types';
+import { testIds } from '../data/tests';
 
 const Controls = ({
 	active,
