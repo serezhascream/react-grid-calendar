@@ -10,6 +10,8 @@ import MonthView from './components/monthView';
 import YearView from './components/yearView';
 import DecadeView from './components/decadeView';
 
+import './styles/index.scss';
+
 const Calendar = ({
 	firstDayIsMonday = true,
 	selected = null,
