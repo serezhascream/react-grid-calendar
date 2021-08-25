@@ -1,7 +1,9 @@
-.rgc-calendar {
+:root {
 	--calendar-text-color: #263238;
 	--calendar-accent-color: #BD2C2C;
-	
+}
+
+.rgc-calendar {
 	width: 350px;
 	
 	&__controls {
