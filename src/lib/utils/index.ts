@@ -93,7 +93,7 @@ export const getIsSelected = (
 	year: number,
 	month: number,
 	day: number,
-	selected: TDayObject
+	selected: TSelectedDay
 ): boolean => {
 	if (! selected) {
 		return false;
