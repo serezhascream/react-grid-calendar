@@ -2,9 +2,7 @@
 	"name": "react-grid-calendar",
 	"version": "1.0.0",
 	"description": "A simple calendar built with React, Typescript, and using css-grid",
-	"main": "./lib/cjs/index.js",
-	"module": "./lib/esm/index.js",
-	"types": "./lib/esm/index.d.ts",
+	"main": "./dist/index.js",
 	"scripts": {
 		"dist": "rm -rf dist && NODE_ENV=production babel ./src --out-dir dist --copy-files --extensions .ts,.tsx",
 		"build": "npm run compile-scss && npm run build:esm && npm run build:cjs",
