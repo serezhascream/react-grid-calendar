@@ -2,7 +2,7 @@
 	"name": "react-grid-calendar",
 	"version": "1.0.0",
 	"description": "A simple calendar built with React, Typescript, and using css-grid",
-	"main": "./dist/index.js",
+	"main": "./lib/index.js",
 	"scripts": {
 		"deploy": "npm run clean-dist && npm run prebuild && npm run compile-types && npm run publish && npm run clean-dist",
 		"prebuild": "NODE_ENV=production babel ./src/lib --out-dir lib --copy-files --extensions .ts,.tsx --config-file ./conf/babel.config.json",
