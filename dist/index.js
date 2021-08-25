@@ -9,19 +9,19 @@ require("core-js/modules/web.dom-collections.iterator.js");
 
 var React = _interopRequireWildcard(require("react"));
 
-var _tests = require("data/tests");
+var _tests = require("./data/tests");
 
-var _useCalendar = _interopRequireDefault(require("hooks/useCalendar"));
+var _useCalendar = _interopRequireDefault(require("./hooks/useCalendar"));
 
-var _useDecade = _interopRequireDefault(require("hooks/useDecade"));
+var _useDecade = _interopRequireDefault(require("./hooks/useDecade"));
 
-var _controls = _interopRequireDefault(require("components/controls"));
+var _controls = _interopRequireDefault(require("./components/controls"));
 
-var _monthView = _interopRequireDefault(require("components/monthView"));
+var _monthView = _interopRequireDefault(require("./components/monthView"));
 
-var _yearView = _interopRequireDefault(require("components/yearView"));
+var _yearView = _interopRequireDefault(require("./components/yearView"));
 
-var _decadeView = _interopRequireDefault(require("components/decadeView"));
+var _decadeView = _interopRequireDefault(require("./components/decadeView"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

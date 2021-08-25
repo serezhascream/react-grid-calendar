@@ -9,9 +9,9 @@ exports.default = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
-var _constants = require("data/constants");
+var _constants = require("../data/constants");
 
-var _tests = require("data/tests");
+var _tests = require("../data/tests");
 
 var _monthItem = _interopRequireDefault(require("./monthItem"));
 

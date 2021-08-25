@@ -9,7 +9,7 @@ exports.default = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
-var _tests = require("data/tests");
+var _tests = require("../data/tests");
 
 var _yearItem = _interopRequireDefault(require("./yearItem"));
 
