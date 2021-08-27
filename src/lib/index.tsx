@@ -1,6 +1,5 @@
 import * as React from 'react';
  
-import { TCalendarProps, TWeekdayTitles } from './types';
 import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
@@ -10,17 +9,33 @@ import MonthView from './components/monthView';
 import YearView from './components/yearView';
 import DecadeView from './components/decadeView';
 
+import {
+	TWeekdayTitles,
+	TSelectedDay,
+	TDayObject,
+	TYearAndMonth
+} from './types';
+
 import { WEEKDAY_TITLES } from './data/constants';
 
 import './styles/index.scss';
 
-const Calendar = ({
-	firstDayIsMonday = true,
-	selected = null,
-	markers = [],
-	weekdayTitles = WEEKDAY_TITLES,
-	onSelectDay = () => {},
-}: TCalendarProps) => {
+interface Props {
+	firstDayIsMonday?: boolean;
+	selected?: TSelectedDay;
+	markers?: number[];
+	weekdayTitles?: string[];
+	onSelectDay?: (day: TDayObject) => void;
+}
+
+const Calendar: React.VFC<Props> = props => {
+	const {
+		firstDayIsMonday = true,
+		selected = null,
+		markers = [],
+		weekdayTitles = WEEKDAY_TITLES,
+		onSelectDay = () => {},
+	} = props;
 	
 	const {
 		data,
@@ -30,8 +45,8 @@ const Calendar = ({
 		setSelected,
 	} = useCalendar(selected, markers, firstDayIsMonday);
 	
-	const [activeView, setActiveView] = React.useState('month');
-	const [current, setCurrent] = React.useState(active);
+	const [activeView, setActiveView] = React.useState<string | null>('month');
+	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
 	const { decade, switchDecade } = useDecade(current.year);
 	
 	const handleSwitchDirection = React.useCallback((direction: string): void => {
@@ -48,7 +63,7 @@ const Calendar = ({
 		setActiveView(view);
 	}, []);
 	
-	const handlerSelectDay = React.useCallback(day => {
+	const handlerSelectDay = React.useCallback((day: TDayObject): void => {
 		if (day.month !== 'current') {
 			switchMonth(day.month);
 		}
@@ -71,13 +86,8 @@ const Calendar = ({
 		setActiveView('year');
 	},[current, setActive]);
 
-	React.useEffect(() => {
-		setCurrent(active);
-	}, [active]);
-
-	React.useEffect(() => {
-		setSelected(selected);
-	}, [selected]);
+	React.useEffect(() => setCurrent(active), [active]);
+	React.useEffect(() => setSelected(selected), [selected]);
 	
 	return (
 		<div className="org-calendar" data-testid={testIds.calendar}>

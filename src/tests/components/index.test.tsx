@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 
 import Calendar from '../../lib/index';
 import { testIds } from '../../lib/data/tests';
-import { weekdayTitlesRus } from '../fixture';
 
 describe('components > Calendar', () => {
 	it('renders', () => {
