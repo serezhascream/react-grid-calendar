@@ -1,9 +1,15 @@
 import * as React from 'react';
 
-import { TYearItemProps } from '../types';
 import { testIds } from '../data/tests';
 
-const YearItem = ({ year, onClick } : TYearItemProps) => {
+interface Props {
+	year: number;
+	onClick(year: number): void;
+}
+
+const YearItem: React.VFC<Props> = props => {
+	const { year, onClick } = props;
+	
 	const handlerClick = React.useCallback((): void => onClick(year), [onClick, year]);
 	
 	return (
