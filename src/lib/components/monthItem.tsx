@@ -1,10 +1,16 @@
 import * as React from 'react';
 
-import { TMonthItemProps } from '../types';
 import { testIds } from '../data/tests';
 
-const MonthItem = ({ title, index, onClick }: TMonthItemProps) => {
-	const handlerClick = React.useCallback(() => onClick(index), [onClick, index]);
+interface Props {
+	title: string;
+	index: number;
+	onClick(index:number): void;
+}
+
+const MonthItem: React.VFC<Props> = props => {
+	const { title, index, onClick } = props;
+	const handlerClick = React.useCallback((): void => onClick(index), [onClick, index]);
 	
 	return (
 		<div
