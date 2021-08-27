@@ -34,13 +34,15 @@ export type TUseDecadeReturn = {
 	switchDecade: TSwitchDirection
 };
 
+export type TWeekdayTitles = [string, string, string, string, string, string, string];
 // PROPS
 
 export interface TCalendarProps {
-	firstDayIsMonday: boolean;
-	selected: TSelectedDay;
-	markers: number[],
-	onSelectDay(day: TDayObject): void;
+	firstDayIsMonday?: boolean;
+	selected?: TSelectedDay;
+	markers?: number[];
+	weekdayTitles?: string[];
+	onSelectDay?: (day: TDayObject) => void;
 }
 
 export interface TDayProps {
@@ -58,7 +60,13 @@ export interface TMonthViewProps {
 	data: TCalendarData;
 	activeView: string;
 	firstDayIsMonday: boolean;
+	weekdayTitles: TWeekdayTitles;
 	onClick: TDaySelectFunc;
+}
+
+export interface TWeekdayTitlesProps {
+	weekdayTitles: TWeekdayTitles;
+	firstDayIsMonday: boolean;
 }
 
 export interface TDecadeViewProps {

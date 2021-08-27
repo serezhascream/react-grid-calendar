@@ -3,17 +3,11 @@ import { render, screen } from '@testing-library/react';
 
 import Calendar from '../../lib/index';
 import { testIds } from '../../lib/data/tests';
+import { weekdayTitlesRus } from '../fixture';
 
 describe('components > Calendar', () => {
 	it('renders', () => {
-		render(
-			<Calendar
-				firstDayIsMonday
-				selected={null}
-				onSelectDay={() => {}}
-				markers={[]}
-			/>
-		);
+		render(<Calendar />);
 
 		expect(
 			screen.getByTestId(testIds.calendar)

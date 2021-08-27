@@ -29,3 +29,5 @@ export const firstOfMay2021:TDayObject = {
 export const jan2021 = { month: 0, year: 2021 };
 export const feb2021 = { month: 1, year: 2021 };
 export const may2021 = { month: 4, year: 2021 };
+
+export const weekdayTitlesRus = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
