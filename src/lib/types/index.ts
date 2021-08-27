@@ -1,3 +1,4 @@
+export type TWeekdayTitles = [string, string, string, string, string, string, string];
 export type TMonthType = "prev" | "current" | "next";
 
 export interface TDayObject {
@@ -21,17 +22,8 @@ export interface TYearAndMonth {
 	month: number;
 }
 
-export type TUseCalendarReturn = {
-	active: TYearAndMonth,
-	data: TCalendarData,
-	setActive(active: TYearAndMonth): void,
-	switchMonth: TSwitchDirection,
-	setSelected(day:TSelectedDay): void,
+export interface TUseCalendarOptions {
+	selectedDay: TSelectedDay,
+	markers: number[],
+	firstDayIsMonday;
 };
-
-export type TUseDecadeReturn = {
-	decade: number[],
-	switchDecade: TSwitchDirection
-};
-
-export type TWeekdayTitles = [string, string, string, string, string, string, string];
