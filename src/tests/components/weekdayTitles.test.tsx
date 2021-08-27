@@ -11,7 +11,7 @@ describe('components > WeekdayTitles', () => {
 	it('renders', () => {
 		render(
 			<WeekdayTitles
-				weekdayTitles={WEEKDAY_TITLES}
+				weekdayTitles={WEEKDAY_TITLES as TWeekdayTitles}
 				firstDayIsMonday
 			/>
 		);
@@ -24,7 +24,7 @@ describe('components > WeekdayTitles', () => {
 	it('renders correctly when week starts on monday', () => {
 		render(
 			<WeekdayTitles
-				weekdayTitles={WEEKDAY_TITLES}
+				weekdayTitles={WEEKDAY_TITLES as TWeekdayTitles}
 				firstDayIsMonday
 			/>
 		);
@@ -37,7 +37,7 @@ describe('components > WeekdayTitles', () => {
 	it('renders correctly when week starts on sunday', () => {
 		render(
 			<WeekdayTitles
-				weekdayTitles={WEEKDAY_TITLES}
+				weekdayTitles={WEEKDAY_TITLES as TWeekdayTitles}
 				firstDayIsMonday={false}
 			/>
 		);
