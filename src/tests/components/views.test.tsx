@@ -7,6 +7,7 @@ import MonthView from '../../lib/components/monthView';
 
 import { nineties_decade, may2021 } from '../fixture';
 import { testIds } from '../../lib/data/tests';
+import { WEEKDAY_TITLES } from '../../lib/data/constants';
 import { getCalendarData } from '../../lib/utils/index';
 
 describe('components > DecadeView', () => {
@@ -44,6 +45,7 @@ describe('components > MonthView', () => {
 			data={calendarData}
 			activeView="month"
 			firstDayIsMonday={true}
+			weekdayTitles={WEEKDAY_TITLES}
 			onClick={() => {}}
 		/>);
 		
