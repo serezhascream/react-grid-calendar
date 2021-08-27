@@ -1,17 +1,27 @@
 import * as React from 'react';
 
-import { TMonthViewProps, TDayObject } from '../types';
+import {
+	TCalendarData,
+	TDayObject,
+	TWeekdayTitles,
+	TDaySelectFunc,
+} from '../types';
+
 import { testIds } from '../data/tests';
 import WeekdayTitles from './weekdayTitles';
 import Day from './day';
 
-const MonthView = ({
-	data = [],
-	activeView,
-	firstDayIsMonday,
-	weekdayTitles,
-	onClick,
-}: TMonthViewProps) => {
+interface Props {
+	data: TCalendarData;
+	activeView: string | null;
+	firstDayIsMonday: boolean;
+	weekdayTitles: TWeekdayTitles;
+	onClick: TDaySelectFunc;
+}
+
+const MonthView: React.VFC<Props> = props => {
+	const { data, activeView, firstDayIsMonday, weekdayTitles, onClick } = props;
+
 	const handlerClick = React.useCallback((day: TDayObject) => onClick(day), [onClick]);
 	
 	if (activeView !== 'month') {
