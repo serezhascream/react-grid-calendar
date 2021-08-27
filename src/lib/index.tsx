@@ -1,6 +1,6 @@
 import * as React from 'react';
  
-import { TCalendarProps } from './types';
+import { TCalendarProps, TWeekdayTitles } from './types';
 import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
@@ -10,13 +10,16 @@ import MonthView from './components/monthView';
 import YearView from './components/yearView';
 import DecadeView from './components/decadeView';
 
+import { WEEKDAY_TITLES } from './data/constants';
+
 import './styles/index.scss';
 
 const Calendar = ({
 	firstDayIsMonday = true,
 	selected = null,
 	markers = [],
-	onSelectDay,
+	weekdayTitles = WEEKDAY_TITLES,
+	onSelectDay = () => {},
 }: TCalendarProps) => {
 	
 	const {
@@ -88,6 +91,7 @@ const Calendar = ({
 				data={data}
 				activeView={activeView}
 				firstDayIsMonday={firstDayIsMonday}
+				weekdayTitles={weekdayTitles as TWeekdayTitles}
 				onClick={handlerSelectDay}
 			/>
 			<YearView

@@ -9,6 +9,7 @@ const MonthView = ({
 	data = [],
 	activeView,
 	firstDayIsMonday,
+	weekdayTitles,
 	onClick,
 }: TMonthViewProps) => {
 	const handlerClick = React.useCallback((day: TDayObject) => onClick(day), [onClick]);
@@ -19,7 +20,7 @@ const MonthView = ({
 	
 	return (
 		<React.Fragment>
-			<WeekdayTitles firstDayIsMonday={firstDayIsMonday} />
+			<WeekdayTitles weekdayTitles={weekdayTitles} firstDayIsMonday={firstDayIsMonday} />
 			<div className="rgc-calendar__month" data-testid={testIds.monthView}>
 				{
 					data.map(day => (

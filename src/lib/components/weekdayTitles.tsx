@@ -1,16 +1,18 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { WEEKDAY_TITLES } from '../data/constants';
 import { testIds } from '../data/tests';
+import { TWeekdayTitlesProps } from '../types';
 
-const WeekdayTitles = ({ firstDayIsMonday }: { firstDayIsMonday: boolean }) => {
+const WeekdayTitles: React.VFC<TWeekdayTitlesProps> = props => {
+	const { weekdayTitles, firstDayIsMonday } = props;
+	
 	const titles = React.useMemo(() => {
 		if (firstDayIsMonday) {
-			return WEEKDAY_TITLES;
+			return weekdayTitles;
 		}
 
-		return ['sun', ...WEEKDAY_TITLES.slice(0, -1)];
+		return [weekdayTitles.pop(), ...weekdayTitles.slice(0, -1)];
 	}, [firstDayIsMonday]);
 
 	const weekend_days = React.useMemo(
