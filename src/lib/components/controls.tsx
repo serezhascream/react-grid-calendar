@@ -1,17 +1,25 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 import { MONTHS_TITLES } from '../data/constants';
-import { TControlsProps } from '../types';
+import { TSwitchDirection, TYearAndMonth } from '../types';
 import { testIds } from '../data/tests';
 
-const Controls = ({
-	active,
-	activeView,
-	onSwitchDirection,
-	onSwitchView,
-}: TControlsProps) => {
+interface Props {
+	active: TYearAndMonth,
+	activeView: string | null,
+	onSwitchDirection: TSwitchDirection,
+	onSwitchView(view: string): void,
+}
+
+const Controls: React.VFC<Props> = props => {
+	const { active, activeView, onSwitchDirection, onSwitchView, } = props;
+	
 	const monthTitle = React.useMemo(() => (MONTHS_TITLES[active.month]), [active]);
-	const blockedArrowsClass = React.useMemo(() => (activeView === 'year' ? ' rgc-calendar__btn--blocked' : ''), [activeView]);
+	const blockedArrowsClass = React.useMemo(
+		() => classNames({' rgc-calendar__btn--blocked': activeView === 'year'}),
+		[activeView]
+	);
 
 	const handlerClickPrev = React.useCallback(
 		(): void => onSwitchDirection('prev'), [onSwitchDirection]
