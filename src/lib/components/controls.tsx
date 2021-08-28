@@ -1,21 +1,30 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { MONTHS_TITLES } from '../data/constants';
 import { TSwitchDirection, TYearAndMonth } from '../types';
 import { testIds } from '../data/tests';
 
 interface Props {
 	active: TYearAndMonth,
 	activeView: string | null,
+	monthTitles: string[],
 	onSwitchDirection: TSwitchDirection,
 	onSwitchView(view: string): void,
 }
 
 const Controls: React.VFC<Props> = props => {
-	const { active, activeView, onSwitchDirection, onSwitchView, } = props;
+	const {
+		active,
+		activeView,
+		monthTitles,
+		onSwitchDirection,
+		onSwitchView,
+	} = props;
 	
-	const monthTitle = React.useMemo(() => (MONTHS_TITLES[active.month]), [active]);
+	const monthTitle = React.useMemo(
+		() => (monthTitles[active.month]), [active, monthTitles]
+	);
+	
 	const blockedArrowsClass = React.useMemo(
 		() => classNames({' rgc-calendar__btn--blocked': activeView === 'year'}),
 		[activeView]

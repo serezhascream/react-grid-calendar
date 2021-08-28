@@ -1,10 +1,11 @@
 import * as React from 'react';
  
-import { TWeekdayTitles, TSelectedDay, TDayObject, TYearAndMonth } from './types';
+import { TSelectedDay, TDayObject, TYearAndMonth } from './types';
 import { WEEKDAY_TITLES } from './data/constants';
 import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
+import { getLocalizedNames } from './utils/localization';
 
 import Controls from './components/controls';
 import MonthView from './components/monthView';
@@ -17,7 +18,7 @@ interface Props {
 	firstDayIsMonday?: boolean;
 	selected?: TSelectedDay;
 	markers?: number[];
-	weekdayTitles?: string[];
+	locale?: string;
 	onSelectDay?: (day: TDayObject) => void;
 }
 
@@ -26,12 +27,13 @@ const Calendar: React.VFC<Props> = props => {
 		firstDayIsMonday = true,
 		selected = null,
 		markers = [],
-		weekdayTitles = WEEKDAY_TITLES,
+		locale = 'en-US',
 		onSelectDay = () => {},
 	} = props;
 	
 	const calendar = useCalendar({ selectedDay: selected, markers, firstDayIsMonday });
 	const { data, active, setActive, switchMonth, setSelected } = calendar;
+	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
 	
 	const [activeView, setActiveView] = React.useState<string | null>('month');
 	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
@@ -82,6 +84,7 @@ const Calendar: React.VFC<Props> = props => {
 			<Controls
 				active={current}
 				activeView={activeView}
+				monthTitles={months}
 				onSwitchDirection={handleSwitchDirection}
 				onSwitchView={handlerSwitchView}
 			/>
@@ -89,11 +92,12 @@ const Calendar: React.VFC<Props> = props => {
 				data={data}
 				activeView={activeView}
 				firstDayIsMonday={firstDayIsMonday}
-				weekdayTitles={weekdayTitles as TWeekdayTitles}
+				weekdayTitles={weekdays}
 				onClick={handlerSelectDay}
 			/>
 			<YearView
 				activeView={activeView}
+				monthTitles={months}
 				onClick={handlerSelectMonth}
 			/>
 			<DecadeView
