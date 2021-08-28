@@ -5,6 +5,7 @@ interface Props {
     activeView: string | null;
     firstDayIsMonday: boolean;
     weekdayTitles: string[];
+    classPrefix?: string | string[] | null;
     onClick: TDaySelectFunc;
 }
 declare const _default: React.NamedExoticComponent<Props>;
