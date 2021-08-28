@@ -32,6 +32,7 @@ const YearView: React.VFC<Props> = props => {
 						key={title}
 						title={title}
 						index={i}
+						classPrefix={classPrefix}
 						onClick={handlerClick}
 					/>
 				))
