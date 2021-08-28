@@ -56,6 +56,24 @@ describe('components > Controls', () => {
 		).toHaveClass('rgc-calendar__btn--blocked');
 	});
 	
+	
+	it('month title has the correct text', () => {
+		const { months } = getLocalizedNames({ locale: 'ru-RU', firstDayIsMonday: true });
+
+		render(
+			<Controls
+				active={feb2021}
+				activeView="month"
+				monthTitles={months}
+				onSwitchDirection={() => {}}
+				onSwitchView={() => {}}
+			/>
+		);
+		
+		expect(
+			screen.getByTestId(controlsMonthTitle)
+		).toHaveTextContent('Февраль');
+	});
 	it('click on month title works', () => {
 		const handlerSwitchView = jest.fn(view => view);
 		
