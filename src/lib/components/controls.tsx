@@ -3,13 +3,15 @@ import classNames from 'classnames';
 
 import { TSwitchDirection, TYearAndMonth } from '../types';
 import { testIds } from '../data/tests';
+import { getClasses, getArrowButtonClass } from '../utils/classes'
 
 interface Props {
-	active: TYearAndMonth,
-	activeView: string | null,
-	monthTitles: string[],
-	onSwitchDirection: TSwitchDirection,
-	onSwitchView(view: string): void,
+	active: TYearAndMonth;
+	activeView: string | null;
+	monthTitles: string[];
+	classPrefix?: string | string[] | null;
+	onSwitchDirection: TSwitchDirection;
+	onSwitchView(view: string): void;
 }
 
 const Controls: React.VFC<Props> = props => {
@@ -17,6 +19,7 @@ const Controls: React.VFC<Props> = props => {
 		active,
 		activeView,
 		monthTitles,
+		classPrefix = null,
 		onSwitchDirection,
 		onSwitchView,
 	} = props;
@@ -24,11 +27,17 @@ const Controls: React.VFC<Props> = props => {
 	const monthTitle = React.useMemo(
 		() => (monthTitles[active.month]), [active, monthTitles]
 	);
-	
-	const blockedArrowsClass = React.useMemo(
-		() => classNames({' rgc-calendar__btn--blocked': activeView === 'year'}),
-		[activeView]
+	const CPrevBtn = React.useMemo(
+		() => getArrowButtonClass('prev', classPrefix, activeView),
+		[classPrefix, activeView]
 	);
+	const CNextBtn = React.useMemo(
+		() => getArrowButtonClass('next', classPrefix, activeView),
+		[classPrefix, activeView]
+	);
+	const CControls = getClasses(['calendar__controls'], classPrefix);
+	const CMonthBtn = getClasses(['calendar__controls-month'], classPrefix);
+	const CYearBtn = getClasses(['calendar__controls-year'], classPrefix);
 
 	const handlerClickPrev = React.useCallback(
 		(): void => onSwitchDirection('prev'), [onSwitchDirection]
@@ -47,28 +56,28 @@ const Controls: React.VFC<Props> = props => {
 	);
 	
 	return (
-		<div className="rgc-calendar__controls" data-testid={testIds.controls}>
+		<div className={CControls} data-testid={testIds.controls}>
 			<span
-				className={`rgc-calendar__btn rgc-calendar__btn-prev${blockedArrowsClass}`}
+				className={CPrevBtn}
 				data-testid={testIds.controlsPrevBtn}
 				onClick={handlerClickPrev}
 			>{'<'}</span>
 			<span
-				className="rgc-calendar__controls-month"
+				className={CMonthBtn}
 				data-testid={testIds.controlsMonthTitle}
 				onClick={handlerClickOnMonth}
 			>
 				{ monthTitle }
 			</span>
 			<span
-				className="rgc-calendar__controls-year"
+				className={CYearBtn}
 				data-testid={testIds.controlsYearTitle}
 				onClick={handlerClickOnYear}
 			>
 				{active.year}
 			</span>
 			<span
-				className={`rgc-calendar__btn rgc-calendar__btn-next${blockedArrowsClass}`}
+				className={CNextBtn}
 				data-testid={testIds.controlsNextBtn}
 				onClick={handlerClickNext}
 			>{'>'}</span>

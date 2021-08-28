@@ -26,3 +26,20 @@ export const getClasses = (classes: string[], prefix: string | string[] | null) 
 	
 	return classNames.join(' ');
 }
+
+export const getArrowButtonClass = (
+	btn: string,
+	classPrefix: string | string[] | null,
+	activeView: string | null,
+): string => {
+	const buttonClasses = ['calendar__btn', `calendar__btn-${btn}`];
+
+	if (activeView === 'year') {
+		buttonClasses.push('calendar__btn--blocked');
+	}
+	
+	return getClasses(
+		buttonClasses, classPrefix
+	)
+}
+

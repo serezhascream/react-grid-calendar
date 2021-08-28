@@ -90,6 +90,7 @@ const Calendar: React.VFC<Props> = props => {
 				active={current}
 				activeView={activeView}
 				monthTitles={months}
+				classPrefix={classPrefix}
 				onSwitchDirection={handleSwitchDirection}
 				onSwitchView={handlerSwitchView}
 			/>
