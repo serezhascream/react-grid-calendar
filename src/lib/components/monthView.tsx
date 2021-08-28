@@ -1,11 +1,6 @@
 import * as React from 'react';
 
-import {
-	TCalendarData,
-	TDayObject,
-	TWeekdayTitles,
-	TDaySelectFunc,
-} from '../types';
+import { TCalendarData, TDayObject, TDaySelectFunc } from '../types';
 
 import { testIds } from '../data/tests';
 import WeekdayTitles from './weekdayTitles';
@@ -15,7 +10,7 @@ interface Props {
 	data: TCalendarData;
 	activeView: string | null;
 	firstDayIsMonday: boolean;
-	weekdayTitles: TWeekdayTitles;
+	weekdayTitles: string[];
 	onClick: TDaySelectFunc;
 }
 

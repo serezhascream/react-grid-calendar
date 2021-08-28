@@ -1,4 +1,3 @@
-export type TWeekdayTitles = [string, string, string, string, string, string, string];
 export type TMonthType = "prev" | "current" | "next";
 
 export interface TDayObject {

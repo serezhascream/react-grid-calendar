@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-import { MONTHS_TITLES } from '../data/constants';
 import { testIds } from '../data/tests';
 import MonthItem from './monthItem';
 
 interface Props {
-	onClick(index: number): void;
 	activeView: string | null;
+	monthTitles: string[];
+	onClick(index: number): void;
 }
 
 const YearView: React.VFC<Props> = props => {
-	const { onClick, activeView } = props;
+	const { activeView, monthTitles, onClick } = props;
 	
 	const handlerClick = React.useCallback(
 		(index: number): void => onClick(index),
@@ -24,7 +24,7 @@ const YearView: React.VFC<Props> = props => {
 	return (
 		<div className="rgc-calendar__year" data-testid={testIds.yearView}>
 			{
-				MONTHS_TITLES.map((title, i) => (
+				monthTitles.map((title, i) => (
 					<MonthItem
 						key={title}
 						title={title}

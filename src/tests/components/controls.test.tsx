@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { feb2021 } from '../fixture';
 import { testIds } from '../../lib/data/tests';
 import Controls from '../../lib/components/controls';
+import { getLocalizedNames } from '../../lib/utils/localization';
 
 const {
 	controls,
@@ -15,11 +16,14 @@ const {
 } = testIds;
 
 describe('components > Controls', () => {
+	const { months: defaultMonthTitles } = getLocalizedNames({ locale: 'en-US', firstDayIsMonday: true });
+	
 	it('renders correctly', () => {
 		render(
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={() => {}}
 			/>
@@ -37,6 +41,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="year"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={() => {}}
 			/>
@@ -51,6 +56,24 @@ describe('components > Controls', () => {
 		).toHaveClass('rgc-calendar__btn--blocked');
 	});
 	
+	
+	it('month title has the correct text', () => {
+		const { months } = getLocalizedNames({ locale: 'ru-RU', firstDayIsMonday: true });
+
+		render(
+			<Controls
+				active={feb2021}
+				activeView="month"
+				monthTitles={months}
+				onSwitchDirection={() => {}}
+				onSwitchView={() => {}}
+			/>
+		);
+		
+		expect(
+			screen.getByTestId(controlsMonthTitle)
+		).toHaveTextContent('Февраль');
+	});
 	it('click on month title works', () => {
 		const handlerSwitchView = jest.fn(view => view);
 		
@@ -58,6 +81,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={handlerSwitchView}
 			/>
@@ -74,6 +98,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={handlerSwitchView}
 			/>
@@ -90,6 +115,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={handlerSwitchDirection}
 				onSwitchView={() => {}}
 			/>
