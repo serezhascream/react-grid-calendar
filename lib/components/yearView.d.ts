@@ -1,4 +1,8 @@
 import * as React from 'react';
-import { TYearViewProps } from '../types';
-declare const _default: React.MemoExoticComponent<({ onClick, activeView }: TYearViewProps) => JSX.Element | null>;
+interface Props {
+    activeView: string | null;
+    monthTitles: string[];
+    onClick(index: number): void;
+}
+declare const _default: React.NamedExoticComponent<Props>;
 export default _default;
