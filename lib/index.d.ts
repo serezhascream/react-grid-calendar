@@ -6,6 +6,7 @@ interface Props {
     selected?: TSelectedDay;
     markers?: number[];
     locale?: string;
+    classPrefix?: string | string[] | null;
     onSelectDay?: (day: TDayObject) => void;
 }
 declare const _default: React.NamedExoticComponent<Props>;

@@ -15,6 +15,7 @@ export type TSelectedDay = TDayObject | null;
 export type TCalendarData = TDayObject[];
 export type TDaySelectFunc = (day: TDayObject) => void;
 export type TSwitchDirection = (direction: string) => void;
+export type TConditionalObj = { [key: string]: boolean };
 
 export interface TYearAndMonth {
 	year: number;

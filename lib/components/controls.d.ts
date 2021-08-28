@@ -4,6 +4,7 @@ interface Props {
     active: TYearAndMonth;
     activeView: string | null;
     monthTitles: string[];
+    classPrefix?: string | string[] | null;
     onSwitchDirection: TSwitchDirection;
     onSwitchView(view: string): void;
 }

@@ -1,15 +1,17 @@
 import * as React from 'react';
-import classNames from 'classnames';
 
 import { testIds } from '../data/tests';
+import { getClasses  } from '../utils/classes';
 
 interface Props {
 	weekdayTitles: string[];
 	firstDayIsMonday: boolean;
+	classPrefix?: string | string[] | null;
 }
 
 const WeekdayTitles: React.VFC<Props> = props => {
-	const { weekdayTitles, firstDayIsMonday } = props;
+	const { weekdayTitles, firstDayIsMonday, classPrefix = null } = props;
+	const CWeekdayTitles = getClasses(['calendar__weekday-titles'], classPrefix);
 	
 	const weekend_days = React.useMemo(
 		() => (firstDayIsMonday ? [5, 6] : [0, 6]),
@@ -18,16 +20,17 @@ const WeekdayTitles: React.VFC<Props> = props => {
 	
 	return (
 		
-		<div className="rgc-calendar__weekday-titles" data-testid={testIds.weekdayTitles}>
+		<div className={CWeekdayTitles} data-testid={testIds.weekdayTitles}>
 			{
 				weekdayTitles.map((day: string, i: number) => {
-					const classes = classNames(
-						'rgc-calendar__weekday-day',
-						{'rgc-calendar__weekday-day--weekend': weekend_days.includes(i)}
-					);
+					const classes = [ 'calendar__weekday-day'];
+					if (weekend_days.includes(i)) {
+						classes.push('calendar__weekday-day--weekend');
+					}
+					const CWeekday = getClasses(classes, classPrefix);
 					
 					return (
-						<span key={day} className={classes}>{day}</span>
+						<span key={day} className={CWeekday}>{day}</span>
 					);
 				})
 			}

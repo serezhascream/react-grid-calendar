@@ -6,6 +6,7 @@ import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
 import { getLocalizedNames } from './utils/localization';
+import { getClasses } from './utils/classes';
 
 import Controls from './components/controls';
 import MonthView from './components/monthView';
@@ -19,6 +20,7 @@ interface Props {
 	selected?: TSelectedDay;
 	markers?: number[];
 	locale?: string;
+	classPrefix?: string | string[] | null;
 	onSelectDay?: (day: TDayObject) => void;
 }
 
@@ -28,8 +30,11 @@ const Calendar: React.VFC<Props> = props => {
 		selected = null,
 		markers = [],
 		locale = 'en-US',
+		classPrefix = null,
 		onSelectDay = () => {},
 	} = props;
+
+	const CMainComponent = getClasses(['calendar'], classPrefix);
 	
 	const calendar = useCalendar({ selectedDay: selected, markers, firstDayIsMonday });
 	const { data, active, setActive, switchMonth, setSelected } = calendar;
@@ -80,11 +85,12 @@ const Calendar: React.VFC<Props> = props => {
 	React.useEffect(() => setSelected(selected), [selected]);
 	
 	return (
-		<div className="rgc-calendar" data-testid={testIds.calendar}>
+		<div className={CMainComponent} data-testid={testIds.calendar}>
 			<Controls
 				active={current}
 				activeView={activeView}
 				monthTitles={months}
+				classPrefix={classPrefix}
 				onSwitchDirection={handleSwitchDirection}
 				onSwitchView={handlerSwitchView}
 			/>
@@ -93,16 +99,19 @@ const Calendar: React.VFC<Props> = props => {
 				activeView={activeView}
 				firstDayIsMonday={firstDayIsMonday}
 				weekdayTitles={weekdays}
+				classPrefix={classPrefix}
 				onClick={handlerSelectDay}
 			/>
 			<YearView
 				activeView={activeView}
 				monthTitles={months}
+				classPrefix={classPrefix}
 				onClick={handlerSelectMonth}
 			/>
 			<DecadeView
 				decade={decade}
 				activeView={activeView}
+				classPrefix={classPrefix}
 				onClick={handlerSelectYear}
 			/>
 		</div>
