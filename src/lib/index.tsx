@@ -111,6 +111,7 @@ const Calendar: React.VFC<Props> = props => {
 			<DecadeView
 				decade={decade}
 				activeView={activeView}
+				classPrefix={classPrefix}
 				onClick={handlerSelectYear}
 			/>
 		</div>
