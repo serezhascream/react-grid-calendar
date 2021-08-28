@@ -1,56 +1,51 @@
 import * as React from 'react';
 
-import {
-	getYearAndMonth,
-	getPrev,
-	getNext,
-	getCalendarData
-} from '../utils';
+import { getYearAndMonth, getPrev, getNext, getCalendarData } from '../utils';
+import { TSelectedDay, TYearAndMonth, TCalendarData, TSwitchDirection } from '../types';
 
-import {
-	TSelectedDay,
-	TYearAndMonth,
-	TUseCalendarReturn,
-	TCalendarData
-} from '../types';
-
-export const useCalendar = (
-	selectedDay: TSelectedDay = null,
+interface TUseCalendarOptions {
+	selectedDay: TSelectedDay,
 	markers: number[],
-	firstDayIsMonday = true): TUseCalendarReturn => {
+	firstDayIsMonday: boolean;
+};
+
+interface HookReturn {
+	active: TYearAndMonth;
+	data: TCalendarData;
+	setActive(active: TYearAndMonth): void;
+	switchMonth: TSwitchDirection;
+	setSelected(day:TSelectedDay): void;
+};
+
+export const useCalendar = (options: TUseCalendarOptions): HookReturn => {
+	const { selectedDay, markers, firstDayIsMonday } = options;
 	const activeYearMonth = getYearAndMonth();
-	const [active, setActive] = React.useState(activeYearMonth);
-	const [selected, setSelected] = React.useState(selectedDay);
+	const [active, setActive] = React.useState<TYearAndMonth>(activeYearMonth);
+	const [selected, setSelected] = React.useState<TSelectedDay>(selectedDay);
 	
 	const data = React.useMemo(
-		(): TCalendarData => getCalendarData(active, selected, markers, firstDayIsMonday),
+		(): TCalendarData => getCalendarData({ active, selected, markers, firstDayIsMonday }),
 		[active, selected, firstDayIsMonday]
 	);
 	
 	const handlerSetSelected = React.useCallback(
-		(day: TSelectedDay): void => setSelected(day),
-		[setSelected]
+		(day: TSelectedDay): void => setSelected(day), [setSelected]
 	);
 	
 	const handlerSetActive = React.useCallback(
-		(active: TYearAndMonth): void => setActive(active),
-		[setActive]
+		(active: TYearAndMonth): void => setActive(active), [setActive]
 	);
 	
 	const handlerSwitchMonth = React.useCallback((direction: string): void => {
-		const { year, month } = active;
-		
 		if (direction === 'prev') {
-			const newActive = getPrev(year,month);
+			setActive(getPrev(active));
 			
-			setActive(newActive);
 			return;
 		}
 		
 		if (direction === 'next') {
-			const newActive = getNext(year,month);
+			setActive(getNext(active));
 			
-			setActive(newActive);
 			return;
 		}
 	}, [active]);

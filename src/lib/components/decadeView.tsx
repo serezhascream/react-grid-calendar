@@ -1,10 +1,16 @@
 import * as React from 'react';
 
-import { TDecadeViewProps } from '../types';
 import { testIds } from '../data/tests';
 import YearItem from './yearItem';
 
-const DecadeView = ({ decade, activeView, onClick, }: TDecadeViewProps) => {
+interface Props {
+	decade: number[]
+	activeView: string | null,
+	onClick(year: number): void,
+}
+
+const DecadeView: React.VFC<Props> = props => {
+	const { decade, activeView, onClick } = props;
 
 	const handlerClick = React.useCallback(
 		(year: number): void => onClick(year), [onClick]

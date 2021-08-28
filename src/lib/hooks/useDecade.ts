@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-import { TUseDecadeReturn } from '../types';
+import { TSwitchDirection } from '../types';
+
+interface TReturn {
+	decade: number[];
+	switchDecade: TSwitchDirection;
+};
 
 export const getDecade = (year: number): number[] => {
 	const decade = [];
@@ -14,8 +19,8 @@ export const getDecade = (year: number): number[] => {
 	return decade;
 };
 
-export const useDecade = (currentYear: number): TUseDecadeReturn => {
-	const [decade, setDecade] = React.useState(() => getDecade(currentYear));
+export const useDecade = (currentYear: number): TReturn => {
+	const [decade, setDecade] = React.useState<number[]>(() => getDecade(currentYear));
 	
 	const handlerSwitchDecade = React.useCallback((direction: string): void => {
 		if (direction === 'prev') {

@@ -1,10 +1,17 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { TDayProps } from '../types';
+import { TDayObject, TDaySelectFunc } from '../types';
 import { testIds } from '../data/tests';
 
-const Day = ({ day, onClick }: TDayProps) => {
+interface Props {
+	day: TDayObject;
+	onClick: TDaySelectFunc;
+}
+
+const Day: React.VFC<Props> = props => {
+	const { day, onClick } = props;
+	
 	const classes = React.useMemo(
 		() => classNames(
 			'rgc-calendar__day',
@@ -19,7 +26,7 @@ const Day = ({ day, onClick }: TDayProps) => {
 		[day]
 	);
 	
-	const handlerClick = React.useCallback(() => onClick(day), [onClick, day]);
+	const handlerClick = React.useCallback((): void => onClick(day), [onClick, day]);
 	
 	return (
 		<span

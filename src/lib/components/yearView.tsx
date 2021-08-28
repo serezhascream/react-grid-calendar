@@ -1,13 +1,19 @@
 import * as React from 'react';
 
-import { TYearViewProps } from '../types';
 import { MONTHS_TITLES } from '../data/constants';
 import { testIds } from '../data/tests';
 import MonthItem from './monthItem';
 
-const YearView = ({ onClick, activeView }: TYearViewProps) => {
+interface Props {
+	onClick(index: number): void;
+	activeView: string | null;
+}
+
+const YearView: React.VFC<Props> = props => {
+	const { onClick, activeView } = props;
+	
 	const handlerClick = React.useCallback(
-		(index: number) => onClick(index),
+		(index: number): void => onClick(index),
 		[onClick]
 	);
 

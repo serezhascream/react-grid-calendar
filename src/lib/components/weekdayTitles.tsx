@@ -2,9 +2,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import { testIds } from '../data/tests';
-import { TWeekdayTitlesProps } from '../types';
+import { TWeekdayTitles } from '../types';
 
-const WeekdayTitles: React.VFC<TWeekdayTitlesProps> = props => {
+interface Props {
+	weekdayTitles: TWeekdayTitles;
+	firstDayIsMonday: boolean;
+}
+
+const WeekdayTitles: React.VFC<Props> = props => {
 	const { weekdayTitles, firstDayIsMonday } = props;
 	
 	const titles = React.useMemo(() => {
@@ -27,7 +32,7 @@ const WeekdayTitles: React.VFC<TWeekdayTitlesProps> = props => {
 				titles.map((day: string, i: number) => {
 					const classes = classNames(
 						'rgc-calendar__weekday-day',
-						{ 'rgc-calendar__weekday-day--weekend': weekend_days.includes(i) }
+						{'rgc-calendar__weekday-day--weekend': weekend_days.includes(i)}
 					);
 					
 					return (

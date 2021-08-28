@@ -9,6 +9,7 @@ import { nineties_decade, may2021 } from '../fixture';
 import { testIds } from '../../lib/data/tests';
 import { WEEKDAY_TITLES } from '../../lib/data/constants';
 import { getCalendarData } from '../../lib/utils/index';
+import { TWeekdayTitles } from '../../lib/types';
 
 describe('components > DecadeView', () => {
 	it('renders', () => {
@@ -39,13 +40,13 @@ describe('components > YearView', () => {
 
 describe('components > MonthView', () => {
 	it('renders', () => {
-		const calendarData = getCalendarData(may2021, null, [], true);
+		const calendarData = getCalendarData({ active: may2021 });
 		
 		render(<MonthView
 			data={calendarData}
 			activeView="month"
 			firstDayIsMonday={true}
-			weekdayTitles={WEEKDAY_TITLES}
+			weekdayTitles={WEEKDAY_TITLES as TWeekdayTitles}
 			onClick={() => {}}
 		/>);
 		
