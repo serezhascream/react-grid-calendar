@@ -1,3 +1,4 @@
+import { TDayObject, TConditionalObj } from '../types';
 
 const defaultClassPrefix = 'rgc';
 
@@ -27,6 +28,10 @@ export const getClasses = (classes: string[], prefix: string | string[] | null) 
 	return classNames.join(' ');
 }
 
+export const getConditionalClasses = (classesObject: TConditionalObj): string[] => {
+	return Object.keys(classesObject).filter(key => (!!classesObject[key]));
+};
+
 export const getArrowButtonClass = (
 	btn: string,
 	classPrefix: string | string[] | null,
@@ -43,3 +48,18 @@ export const getArrowButtonClass = (
 	)
 }
 
+export const getDayClasses = (
+	day: TDayObject,
+	classPrefix: string | string[] | null
+): string => {
+	const conditionalClasses = getConditionalClasses({
+		'calendar__day--today': day.isToday,
+		[`calendar__day--${day.month}`]: day.month !== 'current',
+		'calendar__day--weekend': day.isWeekend,
+		'calendar__day--selected': day.isSelected,
+		'calendar__day--has-marker': day.hasMarker,
+	});
+	const classes = ['calendar__day', ...conditionalClasses];
+
+	return getClasses(classes, classPrefix);
+};
