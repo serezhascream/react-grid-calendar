@@ -24,5 +24,5 @@ export interface TYearAndMonth {
 export interface TUseCalendarOptions {
 	selectedDay: TSelectedDay,
 	markers: number[],
-	firstDayIsMonday;
+	firstDayIsMonday: boolean;
 };
