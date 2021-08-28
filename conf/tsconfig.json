@@ -7,8 +7,6 @@
 		"moduleResolution": "node",
 		"isolatedModules": true,
 		"jsx": "react",
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
 		"esModuleInterop": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
