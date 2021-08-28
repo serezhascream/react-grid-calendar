@@ -12,7 +12,7 @@ interface Props {
 
 const MonthItem: React.VFC<Props> = props => {
 	const { title, index, classPrefix = null, onClick } = props;
-	const CMonthItem = getClasses(['rgc-calendar__year-month'], classPrefix);
+	const CMonthItem = getClasses(['calendar__year-month'], classPrefix);
 	const handlerClick = React.useCallback((): void => onClick(index), [onClick, index]);
 	
 	return (
