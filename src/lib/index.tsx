@@ -99,6 +99,7 @@ const Calendar: React.VFC<Props> = props => {
 				activeView={activeView}
 				firstDayIsMonday={firstDayIsMonday}
 				weekdayTitles={weekdays}
+				classPrefix={classPrefix}
 				onClick={handlerSelectDay}
 			/>
 			<YearView
