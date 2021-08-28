@@ -80,7 +80,7 @@ const Calendar: React.VFC<Props> = props => {
 	React.useEffect(() => setSelected(selected), [selected]);
 	
 	return (
-		<div className="org-calendar" data-testid={testIds.calendar}>
+		<div className="rgc-calendar" data-testid={testIds.calendar}>
 			<Controls
 				active={current}
 				activeView={activeView}

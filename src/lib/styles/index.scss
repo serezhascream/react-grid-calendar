@@ -4,7 +4,7 @@
 }
 
 .rgc-calendar {
-	width: 350px;
+	width: 320px;
 	
 	&__controls {
 		display: flex;
@@ -75,9 +75,11 @@
 	
 	&__day {
 		position: relative;
-		padding: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 43px;
 		font-size: 14px;
-		text-align: center;
 		cursor: pointer;
 		
 		&--today {
@@ -137,9 +139,11 @@
 	}
 		
 	&__weekday-day {
-		padding: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 43px;
 		font-size: 14px;
-		text-align: center;
 		color: var(--calendar-text-color);
 		
 		&--weekend {
