@@ -1,5 +1,7 @@
 import * as React from 'react';
  
+import { TWeekdayTitles, TSelectedDay, TDayObject, TYearAndMonth } from './types';
+import { WEEKDAY_TITLES } from './data/constants';
 import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
@@ -8,15 +10,6 @@ import Controls from './components/controls';
 import MonthView from './components/monthView';
 import YearView from './components/yearView';
 import DecadeView from './components/decadeView';
-
-import {
-	TWeekdayTitles,
-	TSelectedDay,
-	TDayObject,
-	TYearAndMonth
-} from './types';
-
-import { WEEKDAY_TITLES } from './data/constants';
 
 import './styles/index.scss';
 
@@ -37,13 +30,8 @@ const Calendar: React.VFC<Props> = props => {
 		onSelectDay = () => {},
 	} = props;
 	
-	const {
-		data,
-		active,
-		setActive,
-		switchMonth,
-		setSelected,
-	} = useCalendar(selected, markers, firstDayIsMonday);
+	const calendar = useCalendar({ selectedDay: selected, markers, firstDayIsMonday });
+	const { data, active, setActive, switchMonth, setSelected } = calendar;
 	
 	const [activeView, setActiveView] = React.useState<string | null>('month');
 	const [current, setCurrent] = React.useState<TYearAndMonth>(active);

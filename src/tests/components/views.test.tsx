@@ -40,7 +40,7 @@ describe('components > YearView', () => {
 
 describe('components > MonthView', () => {
 	it('renders', () => {
-		const calendarData = getCalendarData(may2021, null, [], true);
+		const calendarData = getCalendarData({ active: may2021 });
 		
 		render(<MonthView
 			data={calendarData}
