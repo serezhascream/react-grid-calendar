@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classNames from 'classnames';
 
 import { TDayObject, TDaySelectFunc } from '../types';
 import { testIds } from '../data/tests';
