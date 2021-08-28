@@ -30,7 +30,12 @@ const DecadeView: React.VFC<Props> = props => {
 		>
 			{
 				decade.map((year: number) => (
-					<YearItem key={year} year={year} onClick={handlerClick} />
+					<YearItem
+						key={year}
+						year={year}
+						classPrefix={classPrefix}
+						onClick={handlerClick}
+					/>
 				))
 			}
 		</div>
