@@ -1,5 +1,7 @@
 import * as React from 'react';
-declare const _default: React.MemoExoticComponent<({ firstDayIsMonday }: {
+interface Props {
+    weekdayTitles: string[];
     firstDayIsMonday: boolean;
-}) => JSX.Element>;
+}
+declare const _default: React.NamedExoticComponent<Props>;
 export default _default;

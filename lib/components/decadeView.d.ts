@@ -1,4 +1,8 @@
 import * as React from 'react';
-import { TDecadeViewProps } from '../types';
-declare const _default: React.MemoExoticComponent<({ decade, activeView, onClick, }: TDecadeViewProps) => JSX.Element | null>;
+interface Props {
+    decade: number[];
+    activeView: string | null;
+    onClick(year: number): void;
+}
+declare const _default: React.NamedExoticComponent<Props>;
 export default _default;
