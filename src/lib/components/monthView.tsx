@@ -34,7 +34,11 @@ const MonthView: React.VFC<Props> = props => {
 	
 	return (
 		<React.Fragment>
-			<WeekdayTitles weekdayTitles={weekdayTitles} firstDayIsMonday={firstDayIsMonday} />
+			<WeekdayTitles
+				weekdayTitles={weekdayTitles}
+				firstDayIsMonday={firstDayIsMonday}
+				classPrefix={classPrefix}
+			/>
 			<div className={CMonthView} data-testid={testIds.monthView}>
 				{
 					data.map(day => (
