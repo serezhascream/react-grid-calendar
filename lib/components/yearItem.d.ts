@@ -1,4 +1,7 @@
 import * as React from 'react';
-import { TYearItemProps } from '../types';
-declare const _default: React.MemoExoticComponent<({ year, onClick }: TYearItemProps) => JSX.Element>;
+interface Props {
+    year: number;
+    onClick(year: number): void;
+}
+declare const _default: React.NamedExoticComponent<Props>;
 export default _default;

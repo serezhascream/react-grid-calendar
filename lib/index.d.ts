@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { TCalendarProps } from './types';
+import { TSelectedDay, TDayObject } from './types';
 import './styles/index.scss';
-declare const _default: React.MemoExoticComponent<({ firstDayIsMonday, selected, markers, onSelectDay, }: TCalendarProps) => JSX.Element>;
+interface Props {
+    firstDayIsMonday?: boolean;
+    selected?: TSelectedDay;
+    markers?: number[];
+    locale?: string;
+    onSelectDay?: (day: TDayObject) => void;
+}
+declare const _default: React.NamedExoticComponent<Props>;
 export default _default;

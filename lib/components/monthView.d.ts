@@ -1,4 +1,11 @@
 import * as React from 'react';
-import { TMonthViewProps } from '../types';
-declare const _default: React.MemoExoticComponent<({ data, activeView, firstDayIsMonday, onClick, }: TMonthViewProps) => JSX.Element | null>;
+import { TCalendarData, TDaySelectFunc } from '../types';
+interface Props {
+    data: TCalendarData;
+    activeView: string | null;
+    firstDayIsMonday: boolean;
+    weekdayTitles: string[];
+    onClick: TDaySelectFunc;
+}
+declare const _default: React.NamedExoticComponent<Props>;
 export default _default;
