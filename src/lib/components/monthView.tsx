@@ -38,7 +38,12 @@ const MonthView: React.VFC<Props> = props => {
 			<div className={CMonthView} data-testid={testIds.monthView}>
 				{
 					data.map(day => (
-						<Day key={day.timestamp} day={day} onClick={handlerClick} />
+						<Day
+							key={day.timestamp}
+							day={day}
+							classPrefix={classPrefix}
+							onClick={handlerClick}
+						/>
 					))
 				}
 			</div>
