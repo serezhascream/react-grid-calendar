@@ -34,7 +34,7 @@ const Calendar: React.VFC<Props> = props => {
 		onSelectDay = () => {},
 	} = props;
 
-	const CMainComponent = getClasses(['test', 'calendar'], classPrefix);
+	const CMainComponent = getClasses(['calendar'], classPrefix);
 	
 	const calendar = useCalendar({ selectedDay: selected, markers, firstDayIsMonday });
 	const { data, active, setActive, switchMonth, setSelected } = calendar;
