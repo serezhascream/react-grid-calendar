@@ -2,7 +2,11 @@ import {
 	getClasses,
 	getPrefixes,
 	getArrowButtonClass,
+	getConditionalClasses, 
+	getDayClasses,
 } from '../../lib/utils/classes';
+
+import { firstOfMay2021 } from '../fixture';
 
 const testClasses = ['apple', 'pineaple', 'pen'];
 const testPrefix = 'extra';
@@ -63,4 +67,18 @@ describe('utils > classes', () => {
 			getArrowButtonClass('next', null, 'year')
 		).toEqual(EDefaultArrowNext + ' rgc-calendar__btn--blocked');
 	});
+	
+	it('getConditionalClasses retuns the correct array', () => {
+		const classesObject = { 'yeah': true, 'nope': false, 'sure': true, 'negative': false };
+		
+		expect(getConditionalClasses(classesObject)).toEqual(['yeah', 'sure']);
+	});
+	
+	it('getDayClasses returns the correct string', () => {
+		const classes = getDayClasses(firstOfMay2021, null);
+		
+		expect(classes).toEqual('rgc-calendar__day rgc-calendar__day--weekend');
+	});
+	
+	it.todo('getDayClasses returns the correct string with prefix')
 });
