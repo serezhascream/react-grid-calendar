@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { feb2021 } from '../fixture';
 import { testIds } from '../../lib/data/tests';
 import Controls from '../../lib/components/controls';
+import { getLocalizedNames } from '../../lib/utils/localization';
 
 const {
 	controls,
@@ -15,11 +16,14 @@ const {
 } = testIds;
 
 describe('components > Controls', () => {
+	const { months: defaultMonthTitles } = getLocalizedNames({ locale: 'en-US', firstDayIsMonday: true });
+	
 	it('renders correctly', () => {
 		render(
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={() => {}}
 			/>
@@ -37,6 +41,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="year"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={() => {}}
 			/>
@@ -58,6 +63,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={handlerSwitchView}
 			/>
@@ -74,6 +80,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={handlerSwitchView}
 			/>
@@ -90,6 +97,7 @@ describe('components > Controls', () => {
 			<Controls
 				active={feb2021}
 				activeView="month"
+				monthTitles={defaultMonthTitles}
 				onSwitchDirection={handlerSwitchDirection}
 				onSwitchView={() => {}}
 			/>
