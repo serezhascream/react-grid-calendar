@@ -40,7 +40,7 @@ const Calendar: React.VFC<Props> = props => {
 	const { data, active, setActive, switchMonth, setSelected } = calendar;
 	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
 	
-	const [activeView, setActiveView] = React.useState<string | null>('month');
+	const [activeView, setActiveView] = React.useState<string>('month');
 	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
 	const { decade, switchDecade } = useDecade(current.year);
 	
