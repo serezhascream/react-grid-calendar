@@ -1,7 +1,6 @@
 import * as React from 'react';
  
 import { TSelectedDay, TDayObject, TYearAndMonth } from './types';
-import { WEEKDAY_TITLES } from './data/constants';
 import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
@@ -24,7 +23,7 @@ interface Props {
 	onSelectDay?: (day: TDayObject) => void;
 }
 
-const Calendar: React.VFC<Props> = props => {
+const Calendar: React.VFC<Props> = (props: Props) => {
 	const {
 		firstDayIsMonday = true,
 		selected = null,

@@ -7,7 +7,7 @@ interface TUseCalendarOptions {
 	selectedDay: TSelectedDay,
 	markers: number[],
 	firstDayIsMonday: boolean;
-};
+}
 
 interface HookReturn {
 	active: TYearAndMonth;
@@ -15,7 +15,7 @@ interface HookReturn {
 	setActive(active: TYearAndMonth): void;
 	switchMonth: TSwitchDirection;
 	setSelected(day:TSelectedDay): void;
-};
+}
 
 export const useCalendar = (options: TUseCalendarOptions): HookReturn => {
 	const { selectedDay, markers, firstDayIsMonday } = options;

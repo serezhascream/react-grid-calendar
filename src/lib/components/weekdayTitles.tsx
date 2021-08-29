@@ -9,7 +9,7 @@ interface Props {
 	classPrefix?: string | string[] | null;
 }
 
-const WeekdayTitles: React.VFC<Props> = props => {
+const WeekdayTitles: React.VFC<Props> = (props: Props) => {
 	const { weekdayTitles, firstDayIsMonday, classPrefix = null } = props;
 	const CWeekdayTitles = getClasses(['calendar__weekday-titles'], classPrefix);
 	

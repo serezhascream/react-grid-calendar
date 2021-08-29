@@ -9,7 +9,7 @@ interface Props {
 	onClick(year: number): void;
 }
 
-const YearItem: React.VFC<Props> = props => {
+const YearItem: React.VFC<Props> = (props: Props) => {
 	const { year, classPrefix = null, onClick } = props;
 	const CYearItem = getClasses(['calendar__decade-year'], classPrefix);
 	

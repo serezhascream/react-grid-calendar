@@ -5,7 +5,7 @@ import { TSwitchDirection } from '../types';
 interface TReturn {
 	decade: number[];
 	switchDecade: TSwitchDirection;
-};
+}
 
 export const getDecade = (year: number): number[] => {
 	const decade = [];
