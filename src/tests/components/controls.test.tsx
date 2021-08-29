@@ -18,7 +18,7 @@ const {
 describe('components > Controls', () => {
 	const { months: defaultMonthTitles } = getLocalizedNames({ locale: 'en-US', firstDayIsMonday: true });
 	
-	it('renders correctly', () => {
+	it('renders', () => {
 		render(
 			<Controls
 				active={feb2021}
@@ -30,32 +30,51 @@ describe('components > Controls', () => {
 		);
 
 		expect(screen.getByTestId(controls)).toBeInTheDocument();
-		expect(screen.getByTestId(controlsPrevBtn)).toBeInTheDocument();
-		expect(screen.getByTestId(controlsNextBtn)).toBeInTheDocument();
-		expect(screen.getByTestId(controlsMonthTitle)).toBeInTheDocument();
 		expect(screen.getByTestId(controlsYearTitle)).toBeInTheDocument();
 	});
 	
-	it('has blocked arrows when active view is year', () => {
+	it('has an arrow buttons', () => {
 		render(
 			<Controls
 				active={feb2021}
-				activeView="year"
+				activeView="month"
 				monthTitles={defaultMonthTitles}
 				onSwitchDirection={() => {}}
 				onSwitchView={() => {}}
 			/>
 		);
-		
-		expect(
-			screen.getByTestId(controlsPrevBtn)
-		).toHaveClass('rgc-calendar__btn--blocked');
-		
-		expect(
-			screen.getByTestId(controlsNextBtn)
-		).toHaveClass('rgc-calendar__btn--blocked');
+
+		expect(screen.getByTestId(controlsPrevBtn)).toBeInTheDocument();
+		expect(screen.getByTestId(controlsNextBtn)).toBeInTheDocument();
 	});
 	
+	it('has a month button', () => {
+		render(
+			<Controls
+				active={feb2021}
+				activeView="month"
+				monthTitles={defaultMonthTitles}
+				onSwitchDirection={() => {}}
+				onSwitchView={() => {}}
+			/>
+		);
+
+		expect(screen.getByTestId(controlsMonthTitle)).toBeInTheDocument();
+	});
+	
+	it('has a year button', () => {
+		render(
+			<Controls
+				active={feb2021}
+				activeView="month"
+				monthTitles={defaultMonthTitles}
+				onSwitchDirection={() => {}}
+				onSwitchView={() => {}}
+			/>
+		);
+
+		expect(screen.getByTestId(controlsMonthTitle)).toBeInTheDocument();
+	});
 	
 	it('month title has the correct text', () => {
 		const { months } = getLocalizedNames({ locale: 'ru-RU', firstDayIsMonday: true });
@@ -107,26 +126,5 @@ describe('components > Controls', () => {
 		userEvent.click(screen.getByTestId(controlsYearTitle));
 		
 		expect(handlerSwitchView).toHaveBeenCalledWith('decade');
-	});
-	it('click on arrows works', () => {
-		const handlerSwitchDirection = jest.fn(direction => direction);
-	
-		render(
-			<Controls
-				active={feb2021}
-				activeView="month"
-				monthTitles={defaultMonthTitles}
-				onSwitchDirection={handlerSwitchDirection}
-				onSwitchView={() => {}}
-			/>
-		);
-		
-		userEvent.click(screen.getByTestId(controlsPrevBtn));
-		expect(handlerSwitchDirection).toHaveBeenCalledWith('prev');
-
-		handlerSwitchDirection.mockClear();
-		
-		userEvent.click(screen.getByTestId(controlsNextBtn));
-		expect(handlerSwitchDirection).toHaveBeenCalledWith('next');
 	});
 });
