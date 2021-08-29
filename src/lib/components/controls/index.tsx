@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { TSwitchDirection, TYearAndMonth } from '../types';
-import { testIds } from '../data/tests';
-import { getClasses, getArrowButtonClass } from '../utils/classes'
+import { TSwitchDirection, TYearAndMonth } from '../../types';
+import { testIds } from '../../data/tests';
+import { getClasses, getArrowButtonClass } from '../../utils/classes'
 
 interface Props {
 	active: TYearAndMonth;
