@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event'
 import { testIds } from '../../lib/data/tests';
 import ArrowButton from '../../lib/components/controls/arrowButton';
 
-describe('components > ArrowButton', () => {
+describe('components > Controls > ArrowButton', () => {
 	it('renders', () => {
 		render(
 			<ArrowButton
