@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TSwitchDirection, TYearAndMonth } from '../types';
+import { TSwitchDirection, TYearAndMonth } from '../../types';
 interface Props {
     active: TYearAndMonth;
-    activeView: string | null;
+    activeView: string;
     monthTitles: string[];
     classPrefix?: string | string[] | null;
     onSwitchDirection: TSwitchDirection;
