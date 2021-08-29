@@ -2,8 +2,10 @@ import * as React from 'react';
 
 import { TSwitchDirection, TYearAndMonth } from '../../types';
 import { testIds } from '../../data/tests';
-import { getClasses, getArrowButtonClass } from '../../utils/classes'
+import { getClasses } from '../../utils/classes'
+
 import ArrowButton from './arrowButton';
+import ViewButton from './viewButton';
 
 interface Props {
 	active: TYearAndMonth;
@@ -24,23 +26,17 @@ const Controls: React.VFC<Props> = props => {
 		onSwitchView,
 	} = props;
 	
+	const CControls = getClasses(['calendar__controls'], classPrefix);
 	const monthTitle = React.useMemo(
 		() => (monthTitles[active.month]), [active, monthTitles]
 	);
-	const CControls = getClasses(['calendar__controls'], classPrefix);
-	const CMonthBtn = getClasses(['calendar__controls-month'], classPrefix);
-	const CYearBtn = getClasses(['calendar__controls-year'], classPrefix);
 
 	const handlerSwitchDirection = React.useCallback(
 		(direction: string): void => onSwitchDirection(direction), [onSwitchDirection]
 	);
 	
-	const handlerClickOnMonth = React.useCallback(
-		(): void => onSwitchView('year'), [onSwitchView]
-	);
-
-	const handlerClickOnYear = React.useCallback(
-		(): void => onSwitchView('decade'), [onSwitchView]
+	const handlerSwitchView = React.useCallback(
+		(view: string): void => onSwitchView(view), [onSwitchView]
 	);
 	
 	return (
@@ -51,20 +47,20 @@ const Controls: React.VFC<Props> = props => {
 				classPrefix={classPrefix}
 				onClick={handlerSwitchDirection}
 			/>
-			<span
-				className={CMonthBtn}
-				data-testid={testIds.controlsMonthTitle}
-				onClick={handlerClickOnMonth}
-			>
-				{ monthTitle }
-			</span>
-			<span
-				className={CYearBtn}
-				data-testid={testIds.controlsYearTitle}
-				onClick={handlerClickOnYear}
-			>
-				{active.year}
-			</span>
+			<ViewButton
+				title={monthTitle}
+				view="month"
+				targetView="year"
+				classPrefix={classPrefix}
+				onClick={handlerSwitchView}
+			/>
+			<ViewButton
+				title={active.year}
+				view="year"
+				targetView="decade"
+				classPrefix={classPrefix}
+				onClick={handlerSwitchView}
+			/>
 			<ArrowButton
 				direction="next"
 				activeView={activeView}
