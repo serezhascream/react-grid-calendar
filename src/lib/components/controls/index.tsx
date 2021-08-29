@@ -3,15 +3,16 @@ import * as React from 'react';
 import { TSwitchDirection, TYearAndMonth } from '../../types';
 import { testIds } from '../../data/tests';
 import { getClasses, getArrowButtonClass } from '../../utils/classes'
+import ArrowButton from './arrowButton';
 
 interface Props {
 	active: TYearAndMonth;
-	activeView: string | null;
+	activeView: string;
 	monthTitles: string[];
 	classPrefix?: string | string[] | null;
 	onSwitchDirection: TSwitchDirection;
 	onSwitchView(view: string): void;
-}
+};
 
 const Controls: React.VFC<Props> = props => {
 	const {
@@ -26,24 +27,12 @@ const Controls: React.VFC<Props> = props => {
 	const monthTitle = React.useMemo(
 		() => (monthTitles[active.month]), [active, monthTitles]
 	);
-	const CPrevBtn = React.useMemo(
-		() => getArrowButtonClass('prev', classPrefix, activeView),
-		[classPrefix, activeView]
-	);
-	const CNextBtn = React.useMemo(
-		() => getArrowButtonClass('next', classPrefix, activeView),
-		[classPrefix, activeView]
-	);
 	const CControls = getClasses(['calendar__controls'], classPrefix);
 	const CMonthBtn = getClasses(['calendar__controls-month'], classPrefix);
 	const CYearBtn = getClasses(['calendar__controls-year'], classPrefix);
 
-	const handlerClickPrev = React.useCallback(
-		(): void => onSwitchDirection('prev'), [onSwitchDirection]
-	);
-
-	const handlerClickNext = React.useCallback(
-		(): void => onSwitchDirection('next'), [onSwitchDirection]
+	const handlerSwitchDirection = React.useCallback(
+		(direction: string): void => onSwitchDirection(direction), [onSwitchDirection]
 	);
 	
 	const handlerClickOnMonth = React.useCallback(
@@ -56,11 +45,12 @@ const Controls: React.VFC<Props> = props => {
 	
 	return (
 		<div className={CControls} data-testid={testIds.controls}>
-			<span
-				className={CPrevBtn}
-				data-testid={testIds.controlsPrevBtn}
-				onClick={handlerClickPrev}
-			>{'<'}</span>
+			<ArrowButton
+				direction="prev"
+				activeView={activeView}
+				classPrefix={classPrefix}
+				onClick={handlerSwitchDirection}
+			/>
 			<span
 				className={CMonthBtn}
 				data-testid={testIds.controlsMonthTitle}
@@ -75,11 +65,12 @@ const Controls: React.VFC<Props> = props => {
 			>
 				{active.year}
 			</span>
-			<span
-				className={CNextBtn}
-				data-testid={testIds.controlsNextBtn}
-				onClick={handlerClickNext}
-			>{'>'}</span>
+			<ArrowButton
+				direction="next"
+				activeView={activeView}
+				classPrefix={classPrefix}
+				onClick={handlerSwitchDirection}
+			/>
 		</div>
 	);
 };
