@@ -9,9 +9,9 @@ interface Props {
 	targetView: 'year' | 'decade';
 	classPrefix: string | string[] | null;
 	onClick: (view: string) => void;
-};
+}
 
-const ViewButton: React.VFC<Props> = props => {
+const ViewButton: React.VFC<Props> = (props: Props) => {
 	const { title, view, targetView, classPrefix, onClick} = props;
 	const testId = React.useMemo(
 		() => (view === 'month' ? testIds.controlsMonthTitle : testIds.controlsYearTitle),
@@ -21,7 +21,6 @@ const ViewButton: React.VFC<Props> = props => {
 		() => getClasses([`calendar__controls-${view}`], classPrefix),
 		[view, classPrefix]
 	);
-	const CYearBtn = getClasses(['calendar__controls-year'], classPrefix);
 	
 	const handlerClick = React.useCallback(
 		() => onClick(targetView), [targetView, onClick]

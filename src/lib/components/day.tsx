@@ -10,7 +10,7 @@ interface Props {
 	onClick: TDaySelectFunc;
 }
 
-const Day: React.VFC<Props> = props => {
+const Day: React.VFC<Props> = (props: Props) => {
 	const { day, classPrefix = null, onClick } = props;
 	const CDay = getDayClasses(day, classPrefix);
 	

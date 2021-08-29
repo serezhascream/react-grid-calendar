@@ -14,9 +14,9 @@ interface Props {
 	classPrefix?: string | string[] | null;
 	onSwitchDirection: TSwitchDirection;
 	onSwitchView(view: string): void;
-};
+}
 
-const Controls: React.VFC<Props> = props => {
+const Controls: React.VFC<Props> = (props: Props) => {
 	const {
 		active,
 		activeView,

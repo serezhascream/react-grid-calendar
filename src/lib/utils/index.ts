@@ -148,7 +148,7 @@ export const getWeekdays = (options: TGetWeekdaysOptions): { first: number, last
 };
 
 export const getCalendarData = (options: TGetCalendarDataOpts): TCalendarData => {
-	const { active, selected = null, markers = [], firstDayIsMonday = true } = options;
+	const { active, firstDayIsMonday = true } = options;
 	const weekdays = getWeekdays({ requested: active, firstDayIsMonday });
 	const data = [];
 

@@ -14,7 +14,10 @@ export const getPrefixes = (prefix: string | string[] | null): string[] => {
 	return [defaultClassPrefix, ...prefix];
 }
 
-export const getClasses = (classes: string[], prefix: string | string[] | null) => {
+export const getClasses = (
+	classes: string[],
+	prefix: string | string[] | null,
+): string => {
 	const prefixes = getPrefixes(prefix);
 	
 	const classNames = prefixes.reduce((acc, prefix): string[] => {

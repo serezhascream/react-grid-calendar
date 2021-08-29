@@ -1,12 +1,12 @@
 interface TOptions {
 	locale: string,
 	firstDayIsMonday: boolean,
-};
+}
 
 interface TReturn {
 	weekdays: string[],
 	months: string[], 
-};
+}
 
 export const capitalize = (word: string): string => {
 	return word.slice(0, 1).toUpperCase() + word.slice(1);

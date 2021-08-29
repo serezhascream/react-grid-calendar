@@ -10,7 +10,7 @@ interface Props {
 	onClick(index:number): void;
 }
 
-const MonthItem: React.VFC<Props> = props => {
+const MonthItem: React.VFC<Props> = (props: Props) => {
 	const { title, index, classPrefix = null, onClick } = props;
 	const CMonthItem = getClasses(['calendar__year-month'], classPrefix);
 	const handlerClick = React.useCallback((): void => onClick(index), [onClick, index]);

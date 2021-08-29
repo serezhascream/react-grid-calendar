@@ -11,7 +11,7 @@ interface Props {
 	onClick(year: number): void;
 }
 
-const DecadeView: React.VFC<Props> = props => {
+const DecadeView: React.VFC<Props> = (props: Props) => {
 	const { decade, activeView, classPrefix = null, onClick } = props;
 	const CDecadeView = getClasses(['calendar__decade'], classPrefix);
 
