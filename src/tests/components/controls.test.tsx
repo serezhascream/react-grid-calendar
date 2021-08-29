@@ -7,14 +7,6 @@ import { testIds } from '../../lib/data/tests';
 import Controls from '../../lib/components/controls';
 import { getLocalizedNames } from '../../lib/utils/localization';
 
-const {
-	controls,
-	controlsPrevBtn,
-	controlsNextBtn,
-	controlsYearTitle,
-	controlsMonthTitle
-} = testIds;
-
 describe('components > Controls', () => {
 	const { months: defaultMonthTitles } = getLocalizedNames({ locale: 'en-US', firstDayIsMonday: true });
 	
@@ -29,8 +21,7 @@ describe('components > Controls', () => {
 			/>
 		);
 
-		expect(screen.getByTestId(controls)).toBeInTheDocument();
-		expect(screen.getByTestId(controlsYearTitle)).toBeInTheDocument();
+		expect(screen.getByTestId(testIds.controls)).toBeInTheDocument();
 	});
 	
 	it('has an arrow buttons', () => {
@@ -44,8 +35,8 @@ describe('components > Controls', () => {
 			/>
 		);
 
-		expect(screen.getByTestId(controlsPrevBtn)).toBeInTheDocument();
-		expect(screen.getByTestId(controlsNextBtn)).toBeInTheDocument();
+		expect(screen.getByTestId(testIds.controlsPrevBtn)).toBeInTheDocument();
+		expect(screen.getByTestId(testIds.controlsNextBtn)).toBeInTheDocument();
 	});
 	
 	it('has a month button', () => {
@@ -59,7 +50,7 @@ describe('components > Controls', () => {
 			/>
 		);
 
-		expect(screen.getByTestId(controlsMonthTitle)).toBeInTheDocument();
+		expect(screen.getByTestId(testIds.controlsMonthTitle)).toBeInTheDocument();
 	});
 	
 	it('has a year button', () => {
@@ -73,7 +64,7 @@ describe('components > Controls', () => {
 			/>
 		);
 
-		expect(screen.getByTestId(controlsMonthTitle)).toBeInTheDocument();
+		expect(screen.getByTestId(testIds.controlsMonthTitle)).toBeInTheDocument();
 	});
 	
 	it('month title has the correct text', () => {
@@ -90,41 +81,7 @@ describe('components > Controls', () => {
 		);
 		
 		expect(
-			screen.getByTestId(controlsMonthTitle)
+			screen.getByTestId(testIds.controlsMonthTitle)
 		).toHaveTextContent('Февраль');
-	});
-	it('click on month title works', () => {
-		const handlerSwitchView = jest.fn(view => view);
-		
-		render(
-			<Controls
-				active={feb2021}
-				activeView="month"
-				monthTitles={defaultMonthTitles}
-				onSwitchDirection={() => {}}
-				onSwitchView={handlerSwitchView}
-			/>
-		);
-		
-		userEvent.click(screen.getByTestId(controlsMonthTitle));
-		
-		expect(handlerSwitchView).toHaveBeenCalledWith('year');
-	});
-	it('click on year title works', () => {
-		const handlerSwitchView = jest.fn(view => view);
-		
-		render(
-			<Controls
-				active={feb2021}
-				activeView="month"
-				monthTitles={defaultMonthTitles}
-				onSwitchDirection={() => {}}
-				onSwitchView={handlerSwitchView}
-			/>
-		);
-		
-		userEvent.click(screen.getByTestId(controlsYearTitle));
-		
-		expect(handlerSwitchView).toHaveBeenCalledWith('decade');
 	});
 });
