@@ -1,4 +1,4 @@
-import { TYearAndMonth, TDayObject, TCalendarData, TMonthType, TSelectedDay } from '../types';
+import { TYearAndMonth, TDayObject, TCalendarData, TMonthType } from '../types';
 import { TGetDaysArrayOptions, TGetCalendarDataOpts, TGetWeekdaysOptions, TGetWeekdayOptions, TGetMonthTypeOptions } from '../types/utils';
 export declare const getYearAndMonth: (initialDate?: Date | null) => TYearAndMonth;
 export declare const isToday: (year: number, month: number, day: number) => boolean;
@@ -10,7 +10,7 @@ export declare const getNumOfDaysInMonth: (year: number, month: number) => numbe
 export declare const getStart: ({ year, month }: TYearAndMonth, firstWeekday: number) => number;
 export declare const getEnd: (lastWeekday: number) => number;
 export declare const getMonthType: (options: TGetMonthTypeOptions) => TMonthType;
-export declare const getIsSelected: ({ year, month }: TYearAndMonth, day: number, selected: TSelectedDay) => boolean;
+export declare const getIsSelected: ({ year, month }: TYearAndMonth, day: number, selected: Date | null) => boolean;
 export declare const getDaysArray: (options: TGetDaysArrayOptions) => TDayObject[];
 export declare const getWeekdays: (options: TGetWeekdaysOptions) => {
     first: number;
