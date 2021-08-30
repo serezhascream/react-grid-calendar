@@ -1,6 +1,6 @@
 import * as React from 'react';
  
-import { TSelectedDay, TDayObject, TYearAndMonth } from './types';
+import { TDayObject, TYearAndMonth } from './types';
 import { testIds } from './data/tests';
 import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
@@ -16,7 +16,7 @@ import './styles/index.scss';
 
 interface Props {
 	firstDayIsMonday?: boolean;
-	selected?: TSelectedDay;
+	date?: Date | null;
 	markers?: number[];
 	locale?: string;
 	classPrefix?: string | string[] | null;
@@ -26,7 +26,7 @@ interface Props {
 const Calendar: React.VFC<Props> = (props: Props) => {
 	const {
 		firstDayIsMonday = true,
-		selected = null,
+		date = null,
 		markers = [],
 		locale = 'en-US',
 		classPrefix = null,
@@ -35,8 +35,9 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 
 	const CMainComponent = getClasses(['calendar'], classPrefix);
 	
-	const calendar = useCalendar({ selectedDay: selected, markers, firstDayIsMonday });
-	const { data, active, setActive, switchMonth, setSelected } = calendar;
+	const [selected, setSelected] = React.useState(date);
+	const calendar = useCalendar({ selected, markers, firstDayIsMonday });
+	const { data, active, setActive, switchMonth } = calendar;
 	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
 	
 	const [activeView, setActiveView] = React.useState<string>('month');
@@ -62,6 +63,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 			switchMonth(day.month);
 		}
 
+		setSelected(new Date(day.date));
 		onSelectDay(day);
 	}, [switchMonth, onSelectDay]);
 
@@ -81,7 +83,6 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 	},[current, setActive]);
 
 	React.useEffect(() => setCurrent(active), [active]);
-	React.useEffect(() => setSelected(selected), [selected]);
 	
 	return (
 		<div className={CMainComponent} data-testid={testIds.calendar}>
