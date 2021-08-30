@@ -20,7 +20,7 @@ interface Props {
 	markers?: number[];
 	locale?: string;
 	classPrefix?: string | string[] | null;
-	onSelectDay?: (day: TDayObject) => void;
+	onSelectDay?: (day: Date| null) => void;
 }
 
 const Calendar: React.VFC<Props> = (props: Props) => {
@@ -64,7 +64,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 		}
 
 		setSelected(new Date(day.date));
-		onSelectDay(day);
+		onSelectDay(new Date(day.date));
 	}, [switchMonth, onSelectDay]);
 
 	const handlerSelectMonth = React.useCallback((month: number): void => {
