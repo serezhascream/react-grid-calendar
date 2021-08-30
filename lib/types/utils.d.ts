@@ -1,8 +1,8 @@
-import { TYearAndMonth, TSelectedDay } from './index';
+import { TYearAndMonth } from './index';
 export interface TGetDaysArrayOptions {
     requested: TYearAndMonth;
     active: TYearAndMonth;
-    selected?: TSelectedDay;
+    selected?: Date | null;
     markers?: number[];
     start?: number;
     end?: number | null;
@@ -10,7 +10,7 @@ export interface TGetDaysArrayOptions {
 }
 export interface TGetCalendarDataOpts {
     active: TYearAndMonth;
-    selected?: TSelectedDay;
+    selected?: Date | null;
     markers?: number[];
     firstDayIsMonday?: boolean;
 }

@@ -3,7 +3,6 @@ import {
 	TDayObject,
 	TCalendarData,
 	TMonthType,
-	TSelectedDay,
 } from '../types';
 
 import {
@@ -90,18 +89,17 @@ export const getMonthType = (options: TGetMonthTypeOptions): TMonthType => {
 export const getIsSelected = (
 	{ year, month }: TYearAndMonth,
 	day: number,
-	selected: TSelectedDay
+	selected: Date | null,
 ): boolean => {
 	if (! selected) {
 		return false;
 	}
 
-	const selectedDate = new Date(selected.timestamp);
-	const { year: selectedYear, month: selectedMonth } = getYearAndMonth(selectedDate);
+	const { year: selectedYear, month: selectedMonth } = getYearAndMonth(selected);
+	const selectedDay = selected.getDate();
 
-	return year === selectedYear && month === selectedMonth && selected.day === day;
+	return year === selectedYear && month === selectedMonth && selectedDay === day;
 };
-
 
 export const getDaysArray = (options: TGetDaysArrayOptions): TDayObject[] => {
 	const {
@@ -124,6 +122,7 @@ export const getDaysArray = (options: TGetDaysArrayOptions): TDayObject[] => {
 		
 		days.push({
 			day,
+			date,
 			month: getMonthType({ requested, active }),
 			timestamp,
 			isToday: isToday(requested.year, requested.month, day),

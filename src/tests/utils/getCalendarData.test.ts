@@ -1,5 +1,5 @@
 import { getCalendarData } from '../../lib/utils/';
-import { may2021, firstOfMay2021 } from '../fixture';
+import { may2021 } from '../fixture';
 
 describe('utils > getCalendarData', () => {
 	it('returns correct data when week starts on monday', () => {
@@ -10,7 +10,8 @@ describe('utils > getCalendarData', () => {
 	});
 	
 	it('returned data contains selected day', () => {
-		const data = getCalendarData({ active: may2021, selected: firstOfMay2021 });
+		const date = new Date(2021, 4, 1);
+		const data = getCalendarData({ active: may2021, selected: date });
 		
 		expect(data.find(day => day.isSelected)).toBeTruthy();
 	});
