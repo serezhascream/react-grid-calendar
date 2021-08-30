@@ -1,13 +1,12 @@
 const { renderHook, act, cleanup  } = require('@testing-library/react-hooks');
 
 import useCalendar from '../../lib/hooks/useCalendar';
-import { TDayObject, TUseCalendarOptions } from '../../lib/types';
 
 describe('hooks > useCalendar', () => {
 	afterEach(cleanup);
 	const today = new Date(Date.now());
-	const defaultOptions: TUseCalendarOptions = {
-		selectedDay: null,
+	const defaultOptions = {
+		selected: null,
 		markers: [],
 		firstDayIsMonday: true
 	};
@@ -35,32 +34,6 @@ describe('hooks > useCalendar', () => {
 		});
 	
 		expect(result.current.active).toEqual(newActive);
-	});
-
-	it('setSelected method works', () => {
-		const { result } = renderHook(() => useCalendar(defaultOptions));
-		const testDate = new Date(2021, 2, 6);
-		
-		const testDay:TDayObject = {
-			day: 6,
-			month: 'current',
-			timestamp: testDate.getTime(),
-			weekday: 5,
-			isToday: false,
-			isWeekend: true,
-			isSelected: true,
-			hasMarker: false,
-		};
-		
-		act(() => {
-			result.current.setActive({ month: 2, year: 2021 });
-			result.current.setSelected(testDay);
-		});
-			
-		const selectedDay = result.current.data.find((day: TDayObject) => day.isSelected === true);
-		
-		expect(selectedDay).toBeTruthy();
-		expect(selectedDay).toEqual(testDay);
 	});
 	
 	it('switchMonth method works', () => {

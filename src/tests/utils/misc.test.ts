@@ -11,8 +11,6 @@ import {
 	getIsSelected,
 } from '../../lib/utils';
 
-import { firstOfMay2021 } from '../fixture';
-
 describe('utils > misc utils', () => {
 	it('getYearAndMonth returns correct value without provided args', () => {
 		const today = new Date(Date.now());
@@ -143,8 +141,10 @@ describe('utils > misc utils', () => {
 	});
 	
 	it('getIsSelected returns true when selected day provided', () => {
+		const testDate = new Date(2021, 4, 1);
+		
 		expect(
-			getIsSelected({ year: 2021, month: 4 }, 1, firstOfMay2021)
+			getIsSelected({ year: 2021, month: 4 }, 1, testDate)
 		).toEqual(true);
 	});
 });
