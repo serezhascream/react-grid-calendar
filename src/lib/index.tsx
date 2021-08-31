@@ -38,16 +38,16 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 	const CMainComponent = getClasses(['calendar'], classPrefix);
 	
 	const [active, setActive] = React.useState(() => getYearAndMonth(date));
+	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
 	const [selected, setSelected] = React.useState(selectDay ? date : null);
+	const [activeView, setActiveView] = React.useState<string>('month');
+	const { decade, switchDecade } = useDecade(current.year);
 	const calendarData = React.useMemo(
 		() => getCalendarData({ active, selected, markers, firstDayIsMonday }),
 		[active, selected, markers, firstDayIsMonday],
 	);
 	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
 	
-	const [activeView, setActiveView] = React.useState<string>('month');
-	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
-	const { decade, switchDecade } = useDecade(current.year);
 	
 	const switchMonth = React.useCallback((direction: string): void => {
 		if (direction === 'prev') {
