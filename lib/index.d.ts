@@ -3,6 +3,7 @@ import './styles/index.scss';
 interface Props {
     firstDayIsMonday?: boolean;
     date?: Date | null;
+    selectDay?: boolean;
     markers?: number[];
     locale?: string;
     classPrefix?: string | string[] | null;

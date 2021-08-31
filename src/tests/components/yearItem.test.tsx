@@ -21,4 +21,11 @@ describe('components > YearItem', () => {
 
 		expect(handlerClick).toHaveBeenCalledWith(2019);
 	});
+	it('has --active class', () => {
+		render(<YearItem year={2019} isActive onClick={() => {}} />);
+
+		expect(
+			screen.getByTestId(testIds.yearItem)
+		).toHaveClass('rgc-calendar__decade-year--active');
+	});
 });
