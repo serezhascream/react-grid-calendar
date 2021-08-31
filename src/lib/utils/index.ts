@@ -129,7 +129,7 @@ export const getDaysArray = (options: TGetDaysArrayOptions): TDayObject[] => {
 			isWeekend: isWeekend(weekday, firstDayIsMonday),
 			weekday,
 			isSelected: getIsSelected(requested, day, selected),
-			hasMarker: markers.includes(timestamp),
+			hasMarker: markers.includes(date),
 		});
 	}
 	
