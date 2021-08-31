@@ -5,6 +5,7 @@ import MonthItem from './monthItem';
 import { getClasses } from '../utils/classes';
 
 interface Props {
+	activeMonth?: number | null;
 	activeView: string | null;
 	monthTitles: string[];
 	classPrefix?: string | string[] | null;
@@ -12,7 +13,12 @@ interface Props {
 }
 
 const YearView: React.VFC<Props> = (props: Props) => {
-	const { activeView, monthTitles, classPrefix = null, onClick } = props;
+	const {
+		activeMonth = null,
+		activeView, monthTitles,
+		classPrefix = null,
+		onClick
+	} = props;
 	const CYearView = getClasses(['calendar__year'], classPrefix);
 	
 	const handlerClick = React.useCallback(
@@ -32,6 +38,7 @@ const YearView: React.VFC<Props> = (props: Props) => {
 						key={title}
 						title={title}
 						index={i}
+						isActive={activeMonth === i}
 						classPrefix={classPrefix}
 						onClick={handlerClick}
 					/>

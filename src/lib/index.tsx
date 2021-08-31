@@ -47,7 +47,10 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 		[active, selected, markers, firstDayIsMonday],
 	);
 	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
-	
+	const activeMonth = React.useMemo(
+		() => (active.year === current.year ? active.month : null),
+		[active, current]
+	);
 	
 	const switchMonth = React.useCallback((direction: string): void => {
 		if (direction === 'prev') {
@@ -122,6 +125,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 				onClick={handlerSelectDay}
 			/>
 			<YearView
+				activeMonth={activeMonth}
 				activeView={activeView}
 				monthTitles={months}
 				classPrefix={classPrefix}
@@ -129,6 +133,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 			/>
 			<DecadeView
 				decade={decade}
+				activeYear={active.year}
 				activeView={activeView}
 				classPrefix={classPrefix}
 				onClick={handlerSelectYear}
