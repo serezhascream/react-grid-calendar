@@ -20,4 +20,11 @@ describe('components > MonthItem', () => {
 
 		expect(handlerClick).toHaveBeenCalledWith(2);
 	});
+	it('has --active class', () => {
+		render(<MonthItem title="March" index={2} isActive onClick={() => {}} />);
+
+		expect(
+			screen.getByTestId(testIds.monthItem)
+		).toHaveClass('rgc-calendar__year-month--active');
+	});
 });
