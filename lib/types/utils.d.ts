@@ -3,7 +3,7 @@ export interface TGetDaysArrayOptions {
     requested: TYearAndMonth;
     active: TYearAndMonth;
     selected?: Date | null;
-    markers?: number[];
+    markers?: Date[];
     start?: number;
     end?: number | null;
     firstDayIsMonday?: boolean;
@@ -11,7 +11,7 @@ export interface TGetDaysArrayOptions {
 export interface TGetCalendarDataOpts {
     active: TYearAndMonth;
     selected?: Date | null;
-    markers?: number[];
+    markers?: Date[];
     firstDayIsMonday?: boolean;
 }
 export interface TGetWeekdaysOptions {

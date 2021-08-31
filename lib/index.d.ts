@@ -4,7 +4,7 @@ interface Props {
     firstDayIsMonday?: boolean;
     date?: Date | null;
     selectDay?: boolean;
-    markers?: number[];
+    markers?: Date[];
     locale?: string;
     classPrefix?: string | string[] | null;
     onSelectDay?: (day: Date | null) => void;
