@@ -2,9 +2,9 @@ import * as React from 'react';
  
 import { TDayObject, TYearAndMonth } from './types';
 import { testIds } from './data/tests';
-import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
 import { getLocalizedNames } from './utils/localization';
+import { getCalendarData, getYearAndMonth, getPrev, getNext } from './utils';
 import { getClasses } from './utils/classes';
 
 import Controls from './components/controls';
@@ -17,6 +17,7 @@ import './styles/index.scss';
 interface Props {
 	firstDayIsMonday?: boolean;
 	date?: Date | null;
+	selectDay?: boolean;
 	markers?: number[];
 	locale?: string;
 	classPrefix?: string | string[] | null;
@@ -27,6 +28,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 	const {
 		firstDayIsMonday = true,
 		date = null,
+		selectDay = false,
 		markers = [],
 		locale = 'en-US',
 		classPrefix = null,
@@ -35,14 +37,31 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 
 	const CMainComponent = getClasses(['calendar'], classPrefix);
 	
-	const [selected, setSelected] = React.useState(date);
-	const calendar = useCalendar({ selected, markers, firstDayIsMonday });
-	const { data, active, setActive, switchMonth } = calendar;
+	const [active, setActive] = React.useState(() => getYearAndMonth(date));
+	const [selected, setSelected] = React.useState(selectDay ? date : null);
+	const calendarData = React.useMemo(
+		() => getCalendarData({ active, selected, markers, firstDayIsMonday }),
+		[active, selected, markers, firstDayIsMonday],
+	);
 	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
 	
 	const [activeView, setActiveView] = React.useState<string>('month');
 	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
 	const { decade, switchDecade } = useDecade(current.year);
+	
+	const switchMonth = React.useCallback((direction: string): void => {
+		if (direction === 'prev') {
+			setActive(getPrev(active));
+			
+			return;
+		}
+		
+		if (direction === 'next') {
+			setActive(getNext(active));
+			
+			return;
+		}
+	}, [active]);
 	
 	const handleSwitchDirection = React.useCallback((direction: string): void => {
 		if (activeView === 'month') {
@@ -95,7 +114,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 				onSwitchView={handlerSwitchView}
 			/>
 			<MonthView
-				data={data}
+				data={calendarData}
 				activeView={activeView}
 				firstDayIsMonday={firstDayIsMonday}
 				weekdayTitles={weekdays}
