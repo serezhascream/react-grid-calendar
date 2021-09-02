@@ -21,13 +21,5 @@
 				"allExtensions": true
 			}
 		]
-	],
-	"plugins": [
-		["transform-rename-import",
-			{
-				"original": "./styles/index.scss", 
-				"replacement": "./styles/index.css"
-			}
-		]
 	]
 }
