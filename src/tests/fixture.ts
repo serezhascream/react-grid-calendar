@@ -35,3 +35,15 @@ export const feb2021 = { month: 1, year: 2021 };
 export const may2021 = { month: 4, year: 2021 };
 
 export const weekdayTitlesRus = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+
+export const markersMay = [
+	new Date(2021, 4, 12),
+	new Date(2021, 4, 19),
+	new Date(2021, 4, 29),
+];
+
+export const markersMayWithDupes = [
+	...markersMay,
+	new Date(2021, 4, 19),
+	new Date(2021, 4, 29),
+];
