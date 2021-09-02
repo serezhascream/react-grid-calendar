@@ -26,13 +26,13 @@ import Calendar from 'react-grid-calendar';
 
 Name|Type|Default|Description
 -------|---------|------|------
-**firstDayIsMonday**|`boolean`|`true`|If it's `true` the week starts with Monday, otherwise, it starts with Sunday
-**date**|`Date`|`null`|Used to set active year and month. When skipped calendar will use current month and year as active.
-**selectDay**|`boolean`|`false`|If true, selects the day passed with **date**
-**markers**|`Date[]`|`[]`|An array of Date objects. Marks days that has events in the active month.
+**firstDayIsMonday**|`boolean`|`true`|If `true` the week starts with Monday, otherwise, it starts with Sunday.
+**date**|`Date`|`null`|Used to set active year and month. When skipped calendar will use the current month and year as active.
+**selectDay**|`boolean`|`false`|If true, selects the day passed with **date** property.
+**markers**|`Date[]`|`[]`|An array of Date objects. It marks days that have events in the active month.
 **locale**|`string`|`en-US`|Language code [identifier](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers#0x0400---0x04ff)
-**classPrefix**|`string \| string[] \| null`|`null`|Adds the provided prefix to every class in calendar. Can be a string or an array of strings. When passed an array it will create a class for every passed string.
-**onSelectDay**|`(day: DayObject): void`|`() => {}`|Returns the selected day as Date object
+**classPrefix**|`string \| string[] \| null`|`null`|Adds the provided prefix to every class in calendar.
+**onSelectDay**|`(day: DayObject): void`|`() => {}`|Returns the selected day as Date object.
 
 ## Customization
 
