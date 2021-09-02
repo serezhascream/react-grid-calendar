@@ -23,6 +23,11 @@
 		]
 	],
 	"plugins": [
-		"babel-plugin-transform-scss"
+		["transform-rename-import",
+			{
+				"original": "./styles/index.scss", 
+				"replacement": "./styles/index.css"
+			}
+		]
 	]
 }

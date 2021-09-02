@@ -1,0 +1,134 @@
+:root {
+  --calendar-text-color: #263238;
+  --calendar-accent-color: #BD2C2C;
+}
+
+.rgc-calendar {
+  width: 320px;
+}
+.rgc-calendar__controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+.rgc-calendar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: var(--calendar-text-color);
+}
+.rgc-calendar__btn:hover {
+  color: var(--calendar-accent-color);
+  font-weight: bold;
+}
+.rgc-calendar__btn--blocked {
+  cursor: default;
+  opacity: 0.3;
+}
+.rgc-calendar__btn--blocked:hover {
+  color: var(--calendar-text-color);
+  font-weight: normal;
+}
+.rgc-calendar__controls-year, .rgc-calendar__controls-month {
+  cursor: pointer;
+  color: var(--calendar-text-color);
+}
+.rgc-calendar__controls-year:hover, .rgc-calendar__controls-month:hover {
+  color: var(--calendar-accent-color);
+}
+.rgc-calendar__month, .rgc-calendar__year, .rgc-calendar__decade {
+  display: grid;
+  color: var(--calendar-text-color);
+}
+.rgc-calendar__month {
+  grid-template-columns: repeat(7, auto);
+}
+.rgc-calendar__year {
+  grid-template-columns: repeat(3, auto);
+}
+.rgc-calendar__decade {
+  grid-template-columns: repeat(4, auto);
+}
+.rgc-calendar__year-month, .rgc-calendar__decade-year {
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+.rgc-calendar__year-month--active, .rgc-calendar__year-month:hover, .rgc-calendar__decade-year--active, .rgc-calendar__decade-year:hover {
+  color: var(--calendar-accent-color);
+}
+.rgc-calendar__day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 43px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.rgc-calendar__day--today {
+  font-weight: bold;
+}
+.rgc-calendar__day--prev, .rgc-calendar__day--next {
+  opacity: 0.3;
+}
+.rgc-calendar__day--weekend {
+  color: var(--calendar-accent-color);
+}
+.rgc-calendar__day:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  opacity: 0;
+  margin: auto;
+}
+.rgc-calendar__day:hover:before, .rgc-calendar__day--selected:before {
+  border-color: var(--calendar-accent-color);
+  opacity: 0.3;
+}
+.rgc-calendar__day--selected:before, .rgc-calendar__day--selected:hover:before {
+  border-color: var(--calendar-accent-color);
+  opacity: 1;
+}
+.rgc-calendar__day--has-marker:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 6px;
+  right: 0;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  margin: 0 auto;
+  background-color: var(--calendar-text-color);
+}
+.rgc-calendar__weekday-titles {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.rgc-calendar__weekday-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 43px;
+  font-size: 14px;
+  color: var(--calendar-text-color);
+}
+.rgc-calendar__weekday-day--weekend {
+  color: var(--calendar-accent-color);
+}
+
+/*# sourceMappingURL=index.css.map */
