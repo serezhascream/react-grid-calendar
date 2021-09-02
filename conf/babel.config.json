@@ -21,8 +21,5 @@
 				"allExtensions": true
 			}
 		]
-	],
-	"plugins": [
-		"babel-plugin-transform-scss"
 	]
 }
