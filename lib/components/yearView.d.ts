@@ -1,5 +1,6 @@
 import * as React from 'react';
 interface Props {
+    activeMonth?: number | null;
     activeView: string | null;
     monthTitles: string[];
     classPrefix?: string | string[] | null;

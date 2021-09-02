@@ -1,5 +1,6 @@
+import { getMarkedDays } from '../../lib/utils/getMarkedDays';
 import { getDaysArray } from '../../lib/utils/';
-import { firstOfMay2021, jan2021, feb2021, may2021 } from '../fixture';
+import { jan2021, feb2021, may2021, markersMay } from '../fixture';
 
 describe('utils > getDaysArray', () => {
 	
@@ -40,9 +41,24 @@ describe('utils > getDaysArray', () => {
 		const days = getDaysArray({
 			requested: may2021,
 			active: may2021,
-			selected: firstOfMay2021,
+			selected: new Date(2021, 4, 1),
 		});
 		
 		expect(days.find(day => day.isSelected)).toBeTruthy();
+	});
+	
+	it('returns an array that contains a maked day', () => {
+		const markers = getMarkedDays(markersMay);
+		
+		const days = getDaysArray({
+			requested: may2021,
+			active: may2021,
+			selected: new Date(2021, 4, 1),
+			markers,
+		});
+		
+		const markedDay = days.find(day => day.day === 19);
+		
+		expect(markedDay?.hasMarker).toBeTruthy();
 	});
 });

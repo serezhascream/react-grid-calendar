@@ -1,11 +1,12 @@
 import * as React from 'react';
  
-import { TSelectedDay, TDayObject, TYearAndMonth } from './types';
+import { TDayObject, TYearAndMonth } from './types';
 import { testIds } from './data/tests';
-import useCalendar from './hooks/useCalendar';
 import useDecade from './hooks/useDecade';
 import { getLocalizedNames } from './utils/localization';
+import { getCalendarData, getYearAndMonth, getPrev, getNext } from './utils';
 import { getClasses } from './utils/classes';
+import { getMarkedDays } from './utils/getMarkedDays';
 
 import Controls from './components/controls';
 import MonthView from './components/monthView';
@@ -16,17 +17,19 @@ import './styles/index.scss';
 
 interface Props {
 	firstDayIsMonday?: boolean;
-	selected?: TSelectedDay;
-	markers?: number[];
+	date?: Date | null;
+	selectDay?: boolean;
+	markers?: Date[];
 	locale?: string;
 	classPrefix?: string | string[] | null;
-	onSelectDay?: (day: TDayObject) => void;
+	onSelectDay?: (day: Date| null) => void;
 }
 
 const Calendar: React.VFC<Props> = (props: Props) => {
 	const {
 		firstDayIsMonday = true,
-		selected = null,
+		date = null,
+		selectDay = false,
 		markers = [],
 		locale = 'en-US',
 		classPrefix = null,
@@ -35,13 +38,35 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 
 	const CMainComponent = getClasses(['calendar'], classPrefix);
 	
-	const calendar = useCalendar({ selectedDay: selected, markers, firstDayIsMonday });
-	const { data, active, setActive, switchMonth, setSelected } = calendar;
-	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
-	
-	const [activeView, setActiveView] = React.useState<string>('month');
+	const [active, setActive] = React.useState(() => getYearAndMonth(date));
 	const [current, setCurrent] = React.useState<TYearAndMonth>(active);
+	const [selected, setSelected] = React.useState(selectDay ? date : null);
+	const [activeView, setActiveView] = React.useState<string>('month');
 	const { decade, switchDecade } = useDecade(current.year);
+	const markedDays = React.useMemo(() => getMarkedDays(markers), [markers]);
+	const calendarData = React.useMemo(
+		() => getCalendarData({ active, selected, markers: markedDays, firstDayIsMonday }),
+		[active, selected, markers, firstDayIsMonday],
+	);
+	const { weekdays, months } = getLocalizedNames({ locale, firstDayIsMonday });
+	const activeMonth = React.useMemo(
+		() => (active.year === current.year ? active.month : null),
+		[active, current]
+	);
+	
+	const switchMonth = React.useCallback((direction: string): void => {
+		if (direction === 'prev') {
+			setActive(getPrev(active));
+			
+			return;
+		}
+		
+		if (direction === 'next') {
+			setActive(getNext(active));
+			
+			return;
+		}
+	}, [active]);
 	
 	const handleSwitchDirection = React.useCallback((direction: string): void => {
 		if (activeView === 'month') {
@@ -62,7 +87,8 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 			switchMonth(day.month);
 		}
 
-		onSelectDay(day);
+		setSelected(new Date(day.date));
+		onSelectDay(new Date(day.date));
 	}, [switchMonth, onSelectDay]);
 
 	const handlerSelectMonth = React.useCallback((month: number): void => {
@@ -81,7 +107,6 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 	},[current, setActive]);
 
 	React.useEffect(() => setCurrent(active), [active]);
-	React.useEffect(() => setSelected(selected), [selected]);
 	
 	return (
 		<div className={CMainComponent} data-testid={testIds.calendar}>
@@ -94,7 +119,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 				onSwitchView={handlerSwitchView}
 			/>
 			<MonthView
-				data={data}
+				data={calendarData}
 				activeView={activeView}
 				firstDayIsMonday={firstDayIsMonday}
 				weekdayTitles={weekdays}
@@ -102,6 +127,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 				onClick={handlerSelectDay}
 			/>
 			<YearView
+				activeMonth={activeMonth}
 				activeView={activeView}
 				monthTitles={months}
 				classPrefix={classPrefix}
@@ -109,6 +135,7 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 			/>
 			<DecadeView
 				decade={decade}
+				activeYear={active.year}
 				activeView={activeView}
 				classPrefix={classPrefix}
 				onClick={handlerSelectYear}

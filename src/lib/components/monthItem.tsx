@@ -7,12 +7,19 @@ interface Props {
 	title: string;
 	index: number;
 	classPrefix?: string | string[] | null;
+	isActive?: boolean;
 	onClick(index:number): void;
 }
 
 const MonthItem: React.VFC<Props> = (props: Props) => {
-	const { title, index, classPrefix = null, onClick } = props;
-	const CMonthItem = getClasses(['calendar__year-month'], classPrefix);
+	const { title, index, classPrefix = null, isActive = false, onClick } = props;
+	const classes = ['calendar__year-month'];
+	
+	if (isActive) {
+		classes.push('calendar__year-month--active');
+	}
+	
+	const CMonthItem = getClasses(classes, classPrefix);
 	const handlerClick = React.useCallback((): void => onClick(index), [onClick, index]);
 	
 	return (

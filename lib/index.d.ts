@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { TSelectedDay, TDayObject } from './types';
 import './styles/index.scss';
 interface Props {
     firstDayIsMonday?: boolean;
-    selected?: TSelectedDay;
-    markers?: number[];
+    date?: Date | null;
+    selectDay?: boolean;
+    markers?: Date[];
     locale?: string;
     classPrefix?: string | string[] | null;
-    onSelectDay?: (day: TDayObject) => void;
+    onSelectDay?: (day: Date | null) => void;
 }
 declare const _default: React.NamedExoticComponent<Props>;
 export default _default;

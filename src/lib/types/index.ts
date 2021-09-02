@@ -2,6 +2,7 @@ export type TMonthType = "prev" | "current" | "next";
 
 export interface TDayObject {
 	day: number;
+	date: Date;
 	month:TMonthType;
 	isToday: boolean;
 	timestamp: number;
@@ -11,7 +12,6 @@ export interface TDayObject {
 	hasMarker: boolean;
 }
 
-export type TSelectedDay = TDayObject | null;
 export type TCalendarData = TDayObject[];
 export type TDaySelectFunc = (day: TDayObject) => void;
 export type TSwitchDirection = (direction: string) => void;
@@ -23,7 +23,7 @@ export interface TYearAndMonth {
 }
 
 export interface TUseCalendarOptions {
-	selectedDay: TSelectedDay,
+	selectedDay: Date | null,
 	markers: number[],
 	firstDayIsMonday: boolean;
-};
+}
