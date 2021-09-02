@@ -14,6 +14,8 @@ Since this library uses CSS-grid it may not work in old browsers. If it's critic
 
 ## Usage
 
+1. Import Calendar
+
 ```javascript
 import Calendar from 'react-grid-calendar';
 
@@ -21,6 +23,16 @@ import Calendar from 'react-grid-calendar';
 
 <Calendar />
 ```
+2. Import styles
+
+```javascript
+import 'react-grid-calendar/lib/styles/index.scss';
+
+or
+
+import 'react-grid-calendar/lib/styles/index.css';
+```
+
 
 ### Props
 
