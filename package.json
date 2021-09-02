@@ -4,10 +4,10 @@
 	"description": "A simple calendar built with React, Typescript, and using css-grid",
 	"main": "./lib/index.js",
 	"scripts": {
-		"deploy": "npm run clean-dist && npm run prebuild && npm run compile-types && npm run publish && npm run clean-dist",
-		"prebuild": "NODE_ENV=production babel ./src/lib --out-dir lib --copy-files --extensions .ts,.tsx --config-file ./conf/babel.config.json",
+		"deploy": "npm run clean-dist && npm run build && npm run compile-types && npm run publish && npm run clean-dist",
+		"build": "NODE_ENV=production babel ./src/lib --out-dir lib --copy-files --extensions .ts,.tsx --config-file ./conf/babel.config.json",
 		"compile-types": "tsc -p ./conf/tsconfig.json",
-		"publish": "npm pack",
+		"publish": "npm publish --access public",
 		"clean-dist": "rm -rf lib",
 		"test": "jest --config ./conf/jest.config.js",
 		"test:watch": "jest --watch --config ./conf/jest.config.js"
