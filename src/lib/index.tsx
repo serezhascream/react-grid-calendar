@@ -85,6 +85,12 @@ const Calendar: React.VFC<Props> = (props: Props) => {
 			switchMonth(day.month);
 		}
 
+		if (day.day === selected?.getTime()) {
+			setSelected(null);
+			onSelectDay(null);
+			return;
+		}
+
 		setSelected(new Date(day.date));
 		onSelectDay(new Date(day.date));
 	}, [switchMonth, onSelectDay]);
