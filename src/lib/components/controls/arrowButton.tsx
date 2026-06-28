@@ -10,7 +10,7 @@ interface Props {
 	onClick: (direction: string) => void;
 }
 
-const ArrowButton: React.VFC<Props> = (props: Props) => {
+const ArrowButton = (props: Props) => {
 	const { direction, classPrefix = null, activeView, onClick } = props;
 	const button = React.useMemo(
 		() => ({

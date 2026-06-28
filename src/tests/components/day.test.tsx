@@ -14,11 +14,11 @@ describe('components > Day', () => {
 		expect(day).toBeInTheDocument();
 	});
 
-	it('returns day object on click', () => {
+	it('returns day object on click', async () => {
 		const mockCallback = jest.fn((day) => day);
 		render(<Day day={firstOfMay2021} onClick={mockCallback} />);
 
-		userEvent.click(screen.getByTestId(testIds.day));
+		await userEvent.click(screen.getByTestId(testIds.day));
 
 		expect(mockCallback).toHaveBeenCalledWith(firstOfMay2021);
 	})

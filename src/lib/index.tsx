@@ -23,7 +23,7 @@ interface Props {
 	onSelectDay?: (day: Date| null) => void;
 }
 
-const Calendar: React.VFC<Props> = (props: Props) => {
+const Calendar = (props: Props) => {
 	const {
 		firstDayIsMonday = true,
 		date = null,

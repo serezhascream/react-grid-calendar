@@ -11,7 +11,7 @@ interface Props {
 	onClick: (view: string) => void;
 }
 
-const ViewButton: React.VFC<Props> = (props: Props) => {
+const ViewButton = (props: Props) => {
 	const { title, view, targetView, classPrefix, onClick} = props;
 	const testId = React.useMemo(
 		() => (view === 'month' ? testIds.controlsMonthTitle : testIds.controlsYearTitle),

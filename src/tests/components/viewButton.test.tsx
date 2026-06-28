@@ -86,7 +86,7 @@ describe('components > Controls > ViewButton', () => {
 		).toHaveClass('js-calendar__controls-year');
 	});
 	
-	it('returns a correct view name on click', () => {
+	it('returns a correct view name on click', async () => {
 		const targetView = 'year';
 		const handlerClick = jest.fn(view => view);
 		
@@ -100,7 +100,7 @@ describe('components > Controls > ViewButton', () => {
 			/>
 		);
 
-		userEvent.click(screen.getByTestId(testIds.controlsMonthTitle));
+		await userEvent.click(screen.getByTestId(testIds.controlsMonthTitle));
 
 		expect(handlerClick).toHaveBeenCalledWith(targetView);
 	});

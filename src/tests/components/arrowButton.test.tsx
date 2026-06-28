@@ -48,7 +48,7 @@ describe('components > Controls > ArrowButton', () => {
 		).toHaveClass('rgc-calendar__btn-next');
 	});
 	
-	it('returns a provided direction on click', () => {
+	it('returns a provided direction on click', async () => {
 		const direction = 'next';
 		const handlerClick = jest.fn(direction => direction);
 		
@@ -60,12 +60,12 @@ describe('components > Controls > ArrowButton', () => {
 			/>
 		);
 
-		userEvent.click(screen.getByTestId(testIds.controlsNextBtn));
+		await userEvent.click(screen.getByTestId(testIds.controlsNextBtn));
 
 		expect(handlerClick).toHaveBeenCalledWith(direction);
 	});
 	
-	it('has a class with the provided prefix', () => {
+	it('has a class with the provided prefix', async () => {
 		render(
 			<ArrowButton
 				direction='prev'

@@ -12,7 +12,7 @@ interface Props {
 	onClick(year: number): void;
 }
 
-const DecadeView: React.VFC<Props> = (props: Props) => {
+const DecadeView = (props: Props) => {
 	const {
 		decade,
 		activeView,

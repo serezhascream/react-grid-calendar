@@ -6,13 +6,13 @@
 		"emitDeclarationOnly": true,
 		"moduleResolution": "node",
 		"isolatedModules": true,
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"esModuleInterop": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,
 		"noImplicitAny": true,
 		"strictNullChecks": true,
-		"suppressImplicitAnyIndexErrors": true,
+
 		"allowSyntheticDefaultImports": true,
 		"target": "es5",
 		"downlevelIteration": true

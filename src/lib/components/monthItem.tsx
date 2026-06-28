@@ -11,7 +11,7 @@ interface Props {
 	onClick(index:number): void;
 }
 
-const MonthItem: React.VFC<Props> = (props: Props) => {
+const MonthItem = (props: Props) => {
 	const { title, index, classPrefix = null, isActive = false, onClick } = props;
 	const classes = ['calendar__year-month'];
 	

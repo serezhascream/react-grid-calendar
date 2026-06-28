@@ -12,7 +12,7 @@ interface Props {
 	onClick(index: number): void;
 }
 
-const YearView: React.VFC<Props> = (props: Props) => {
+const YearView = (props: Props) => {
 	const {
 		activeMonth = null,
 		activeView, monthTitles,

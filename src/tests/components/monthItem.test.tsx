@@ -12,11 +12,11 @@ describe('components > MonthItem', () => {
 		expect(screen.getByTestId(testIds.monthItem)).toBeInTheDocument();
 	});
 	
-	it('returns correct value on click', () => {
+	it('returns correct value on click', async () => {
 		const handlerClick = jest.fn(index => index);
 		render(<MonthItem title="March" index={2} onClick={handlerClick} />);
 
-		userEvent.click(screen.getByTestId(testIds.monthItem));
+		await userEvent.click(screen.getByTestId(testIds.monthItem));
 
 		expect(handlerClick).toHaveBeenCalledWith(2);
 	});

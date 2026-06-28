@@ -15,7 +15,7 @@ interface Props {
 	onClick: TDaySelectFunc;
 }
 
-const MonthView: React.VFC<Props> = (props: Props) => {
+const MonthView = (props: Props) => {
 	const {
 		data,
 		activeView,

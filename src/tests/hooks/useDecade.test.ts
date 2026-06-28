@@ -1,4 +1,4 @@
-import { renderHook, act, cleanup } from '@testing-library/react-hooks';
+import { renderHook, act, cleanup } from '@testing-library/react';
 
 import { getDecade, useDecade } from '../../lib/hooks/useDecade';
 import { eighties_decade, seventies_decade } from '../fixture';

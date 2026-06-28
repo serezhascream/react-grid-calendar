@@ -13,11 +13,11 @@ describe('components > YearItem', () => {
 			screen.getByTestId(testIds.yearItem)
 		).toBeInTheDocument();
 	});
-	it('returns a year on click', () => {
+	it('returns a year on click', async () => {
 		const handlerClick = jest.fn(year => year);
 		render(<YearItem year={2019} onClick={handlerClick} />);
 
-		userEvent.click(screen.getByTestId(testIds.yearItem))
+		await userEvent.click(screen.getByTestId(testIds.yearItem))
 
 		expect(handlerClick).toHaveBeenCalledWith(2019);
 	});

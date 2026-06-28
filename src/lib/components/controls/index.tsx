@@ -16,7 +16,7 @@ interface Props {
 	onSwitchView(view: string): void;
 }
 
-const Controls: React.VFC<Props> = (props: Props) => {
+const Controls = (props: Props) => {
 	const {
 		active,
 		activeView,

@@ -5,16 +5,13 @@ module.exports = {
 	rootDir: "../",
 	roots: ["<rootDir>/src"],
 	transform: {
-		"^.+\\.tsx?$": "ts-jest",
+		"^.+\\.tsx?$": ['ts-jest', {
+			tsconfig: "<rootDir>/conf/tsconfig.json",
+		}],
 		".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
 	},
-	setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+	setupFilesAfterEnv: ["@testing-library/jest-dom"],
 	testRegex: "(\\.|/)(test|spec)\\.tsx?$",
 	moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 	moduleDirectories: ["<rootDir>/node_modules", "<rootDir>/src"],
-	globals: {
-		'ts-jest': {
-			tsconfig: "<rootDir>/conf/tsconfig.json",
-		},
-	},
 };
